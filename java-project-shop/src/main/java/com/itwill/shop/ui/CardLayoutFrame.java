@@ -91,7 +91,7 @@ public class CardLayoutFrame extends JFrame {
 			}
 		});
 		prevLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		prevLabel.setIcon(new ImageIcon(CardLayoutFrame.class.getResource("/images/back-30.png")));
+		prevLabel.setIcon(new ImageIcon(CardLayoutFrame.class.getResource("C:\\Users\\itwill\\Pictures\\back-30.png")));
 		menuPanel.add(prevLabel);
 		menuPanel.add(joinPanelButton);
 		
@@ -127,7 +127,7 @@ public class CardLayoutFrame extends JFrame {
 			}
 		});
 		nextLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		nextLabel.setIcon(new ImageIcon(CardLayoutFrame.class.getResource("/images/arrow-right-30.png")));
+		nextLabel.setIcon(new ImageIcon(CardLayoutFrame.class.getResource("C:\\Users\\itwill\\Pictures\\arrow-right-30.png")));
 		menuPanel.add(nextLabel);
 		/*******초기카드설정*****/
 		CardLayout cardLayout=(CardLayout)parentPanel.getLayout();
