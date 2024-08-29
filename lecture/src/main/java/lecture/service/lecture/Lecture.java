@@ -15,6 +15,6 @@ public class Lecture {
 	private String l_desc;
 	private int l_price;
 	private String l_image;
-	private int C_no;//카테고리 넘버
+	private LectureCategory category;
 
 }
