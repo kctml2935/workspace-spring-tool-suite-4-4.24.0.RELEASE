@@ -105,6 +105,7 @@ public class ShopMainFrame extends JFrame {
 		menuPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("추석");
+		lblNewLabel_1.setBorder(new LineBorder(new Color(253, 235, 181), 2));
 		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setPreferredSize(new Dimension(50, 20));
