@@ -15,6 +15,11 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import java.awt.Cursor;
 
 public class ShopMainFrame extends JFrame {
 
@@ -42,7 +47,7 @@ public class ShopMainFrame extends JFrame {
 	 */
 	public ShopMainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 204, 293);
+		setBounds(100, 100, 303, 293);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -83,6 +88,39 @@ public class ShopMainFrame extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JPanel menuPanel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) menuPanel.getLayout();
+		flowLayout.setVgap(1);
+		flowLayout.setHgap(0);
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		menuPanel.setBackground(Color.ORANGE);
+		contentPane.add(menuPanel, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel = new JLabel("홈");
+		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setPreferredSize(new Dimension(50, 20));
+		menuPanel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("추석");
+		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setPreferredSize(new Dimension(50, 20));
+		menuPanel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("특가");
+		lblNewLabel_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setPreferredSize(new Dimension(50, 20));
+		menuPanel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("베스트");
+		lblNewLabel_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setPreferredSize(new Dimension(50, 20));
+		menuPanel.add(lblNewLabel_3);
 	}
 
 }
