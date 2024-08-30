@@ -25,38 +25,24 @@ insert into lecture values(lecture_l_no_SEQ.nextval,'포토샵','',50000,'',3);
 insert into lecture values(lecture_l_no_SEQ.nextval,'프리미어프로','',70000,'',3);
 insert into lecture values(lecture_l_no_SEQ.nextval,'다빈치리졸브','',30000,'',3);
 
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'aaa',1);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'aaa',4);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'aaa',11);
-
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'bbb',2);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'bbb',6);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'bbb',7);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'bbb',10);
-
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'ccc',3);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'ccc',5);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'ccc',8);
-insert into cart(cart_no,cart_qty,user_id,l_no) values(cart_cart_no_SEQ.nextval,1,'ccc',9);
-
 --aaa주문
 insert into orders(order_no,order_price,user_id) values(orders_order_no_SEQ.nextval,270000,'aaa');
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,1);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,4);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,11);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,1);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,4);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,11);
 
 --bbb주문
 insert into orders(order_no,order_price,user_id) values(orders_order_no_SEQ.nextval,800000,'bbb');
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,2);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,6);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,7);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,10);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,2);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,6);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,7);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,10);
 
 --ccc주문
 insert into orders(order_no,order_price,user_id) values(orders_order_no_SEQ.nextval,440000,'ccc');
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,3);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,5);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,8);
-insert into order_item(oi_no,oi_qty,order_no,l_no) values(order_item_oi_no_SEQ.nextval,1,orders_order_no_SEQ.currval,9);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,3);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,5);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,8);
+insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,9);
 
 commit;

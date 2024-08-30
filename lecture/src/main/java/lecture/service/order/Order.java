@@ -17,9 +17,8 @@ import lombok.NoArgsConstructor;
 public class Order {
 	private int order_no;
 	private int order_price;
-	private Userinfo userinfo;
+	private String user_id;
 	
 	@Default
 	private List<OrderItem> orderItems=new ArrayList<OrderItem>();
-
 }

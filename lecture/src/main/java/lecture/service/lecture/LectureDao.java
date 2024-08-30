@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lecture.service.common.DataSource;
+import lecture.service.order.OrderSQL;
 
 public class LectureDao {
 	private DataSource dataSource;
@@ -75,5 +76,34 @@ public class LectureDao {
 		
 		return categoryList;
 	}
+	//ORDER_SELECT_WITH_LECTURE_BY_USER_ID
+		//L_NAME L_DESC L_IMAGE
+		public List<Lecture> findOrderWithLecture(String sUserId) throws Exception{
+			List<Lecture> LectureorderList = new ArrayList<>();
+			Lecture lecture = new Lecture();
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_LECTURE_BY_USER_ID);
+				pstmt.setString(1, sUserId);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					lecture.setL_name(rs.getString("l_name"));
+					lecture.setL_desc(rs.getString("l_desc"));
+					lecture.setL_image(rs.getString("l_image"));
+					
+					LectureorderList.add(lecture);
+				}
+			}finally {
+				if(con != null) {
+					con.close();
+				}
+			}
+			
+			return LectureorderList;
+		}
 
 }

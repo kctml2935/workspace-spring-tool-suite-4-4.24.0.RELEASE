@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderItem {
 	private int oi_no;
-	private int oi_qty;
-	private Order order;
+	private int order_no;
 	private Lecture lecture;
 
 }
