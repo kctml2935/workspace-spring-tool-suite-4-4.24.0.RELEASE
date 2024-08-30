@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LectureCategory {
 	private int C_no;
-	private int C_name;
+	private String C_name;
 	
 }

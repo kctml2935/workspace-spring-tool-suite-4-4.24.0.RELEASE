@@ -108,8 +108,8 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>976</x>
-                          <y>202</y>
+                          <x>689</x>
+                          <y>48</y>
                         </constraint>
                         <sourceConnections/>
                         <targetConnections>
@@ -186,8 +186,8 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>709</x>
-                          <y>415</y>
+                          <x>714</x>
+                          <y>401</y>
                         </constraint>
                         <sourceConnections>
                           <net.java.amateras.db.visual.model.ForeignKeyModel reference="../../.."/>
@@ -215,7 +215,7 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>70</x>
+                                <x>75</x>
                                 <y>412</y>
                               </constraint>
                               <sourceConnections>
@@ -422,8 +422,13 @@
                     <net.java.amateras.db.visual.model.ColumnModel>
                       <columnName>l_price</columnName>
                       <logicalName>l_price</logicalName>
-                      <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel[2]/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
-                      <size>50</size>
+                      <columnType class="net.java.amateras.db.dialect.ColumnType">
+                        <name>NUMBER</name>
+                        <logicalName>Numeric</logicalName>
+                        <supportSize>true</supportSize>
+                        <type>2</type>
+                      </columnType>
+                      <size>10</size>
                       <notNull>false</notNull>
                       <primaryKey>false</primaryKey>
                       <description></description>
