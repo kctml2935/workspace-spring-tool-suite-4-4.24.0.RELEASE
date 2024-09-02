@@ -15,7 +15,7 @@ public class Lecture {
 	private String l_desc;
 	private int l_price;
 	private String l_image;
-	private int C_no;
+	private LectureCategory lectureCategory;
 	
 	public void selectWithLecture(String l_name,String l_desc,String l_image)throws Exception {
 		this.l_name=l_name;

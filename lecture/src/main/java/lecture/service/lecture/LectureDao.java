@@ -21,13 +21,14 @@ public class LectureDao {
 		pstmt.setInt(1, l_no);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
+			LectureCategory category = new LectureCategory(rs.getInt("C_no"));
 			lecture = new Lecture(
 							rs.getInt("l_no"),
 							rs.getString("l_name"),
 							rs.getString("l_desc"),
 							rs.getInt("l_price"),
 							rs.getString("l_image"),
-							rs.getInt("C_no")
+							category
 					 );
 		}
 		return lecture;
@@ -40,12 +41,13 @@ public class LectureDao {
 		PreparedStatement pstmt = con.prepareStatement(LectureSQL.LECTURE_SELECT_ALL);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
+			LectureCategory category = new LectureCategory(rs.getInt("C_no"));
 			Lecture lecture = new Lecture(rs.getInt("l_no"),
 							rs.getString("l_name"),
 							rs.getString("l_desc"),
 							rs.getInt("l_price"),
 							rs.getString("l_image"),
-							rs.getInt("C_no"));
+							category);
 			lectureList.add(lecture);
 		}
 		

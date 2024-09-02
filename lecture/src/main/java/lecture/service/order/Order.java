@@ -17,8 +17,23 @@ import lombok.NoArgsConstructor;
 public class Order {
 	private int order_no;
 	private int order_price;
-	private String user_id;
+	private Userinfo userinfo;
 	
 	@Default
 	private List<OrderItem> orderItems=new ArrayList<OrderItem>();
+	
+	public Order(int order_no) {
+		this.order_no=order_no;
+	}
+	public Order(int order_no,int order_price,Userinfo userinfo) {
+		this.order_no=order_no;
+		this.order_price=order_price;
+		this.userinfo=userinfo; 
+	}
+	public List<OrderItem> getOrderItems() {
+        if (orderItems == null) {
+            orderItems = new ArrayList<>();
+        }
+        return orderItems;
+    }
 }

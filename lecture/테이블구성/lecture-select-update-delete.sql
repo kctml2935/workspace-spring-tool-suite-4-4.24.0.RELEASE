@@ -10,7 +10,7 @@ select * from lecture where C_no=2;
 --aaa 멤버한사람의 강의목록
 select * from orders where user_id='aaa';
 
-select * from orders o join order_item oi on o.order_no=oi.order_no join lecture l on oi.l_no=l.l_no where o.order_no=1;
+select * from orders o join order_item oi on o.order_no=oi.order_no join lecture l on oi.l_no=l.l_no where o.order_no=2;
 
 select * from orders o  
 join order_item oi  

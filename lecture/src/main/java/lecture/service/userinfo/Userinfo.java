@@ -14,4 +14,7 @@ public class Userinfo {
 	private String username;
 	private String password;
 
+	public Userinfo(String user_id) {
+		this.user_id=user_id;
+	}
 }

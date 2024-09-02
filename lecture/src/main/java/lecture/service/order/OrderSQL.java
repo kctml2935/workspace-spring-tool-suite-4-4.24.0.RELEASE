@@ -1,8 +1,8 @@
 package lecture.service.order;
 
 public class OrderSQL {
-	public final static String ORDER_DELETE_BY_USERID = "delete from orders where user_id=?";
-	public final static String ORDER_DELETE_BY_ORDER_NO = "delete from orders where order_no=?";
+	public final static String ORDER_DELETE_BY_USERID = "delete from order_item where order_no in (select order_no from orders where user_id=?)";
+	public final static String ORDER_DELETE_BY_ORDER_NO = "delete from order_item where order_no=?";
 	public final static String ORDER_INSERT ="insert into orders(order_no,order_price,user_id) values(orders_order_no_SEQ.nextval,?,?)";
 	public final static String ORDERITEM_INSERT ="insert into order_item(oi_no,order_no,l_no) values(order_item_oi_no_SEQ.nextval,orders_order_no_SEQ.currval,?)";
 	public final static String ORDER_SELECT_BY_USER_ID="select * from orders where user_id=?";
