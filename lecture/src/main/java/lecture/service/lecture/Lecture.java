@@ -1,5 +1,7 @@
 package lecture.service.lecture;
 
+
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,10 +19,12 @@ public class Lecture {
 	private String l_image;
 	private LectureCategory lectureCategory;
 	
+	
+	
 	public void selectWithLecture(String l_name,String l_desc,String l_image)throws Exception {
 		this.l_name=l_name;
 		this.l_desc=l_desc;
 		this.l_image=l_image;
 	}
-
+	
 }

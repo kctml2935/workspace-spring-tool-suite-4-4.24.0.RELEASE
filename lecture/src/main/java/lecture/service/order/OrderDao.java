@@ -130,7 +130,7 @@ public class OrderDao {
 	}
 	
 	
-	//주문+주문아이템 전체(특정사용자) with order_no
+	//주문+주문아이템 전체(특정사용자) with user_id
 	public List<Order> findOrderWithOrderItemByUserId(String sUserId)throws Exception{
 		List<Order> orderList = new ArrayList<Order>();
 		Connection con = null;
@@ -147,7 +147,7 @@ public class OrderDao {
 				orderList.add(new Order(rs1.getInt("order_no"),rs1.getInt("order_price"),new Userinfo(rs1.getString("user_id"))));
 				
 			}
-			pstmt2 = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_ORDERITEM_BY_ORDER_NO);
+			pstmt2 = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_ORDERITEM_BY_USER_ID);
 			for (int i = 0; i < orderList.size(); i++) {
 				Order tempOrder = orderList.get(i);
 				pstmt2.setInt(1, tempOrder.getOrder_no());
@@ -175,7 +175,50 @@ public class OrderDao {
 		return orderList;
 	}
 	
-	//주문+주문아이템 전체(특정사용자) with user_id
+	//주문+주문아이템 전체(특정사용자) with order_no
+	public List<Order> findOrderWithOrderItemByOrderNo(int orderNo)throws Exception{
+		List<Order> orderList = new ArrayList<Order>();
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
+		try {
+			con = dataSource.getConnection();
+			pstmt1 = con.prepareStatement(OrderSQL.ORDER_SELECT_BY_ORDER_NO);
+			pstmt1.setInt(1, orderNo);
+			rs1 = pstmt1.executeQuery();
+			while(rs1.next()) {
+				orderList.add(new Order(rs1.getInt("order_no"),rs1.getInt("order_price"),new Userinfo(rs1.getString("user_id"))));
+				
+			}
+			pstmt2 = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_ORDERITEM_BY_ORDER_NO);
+			for (int i = 0; i < orderList.size(); i++) {
+				Order tempOrder = orderList.get(i);
+				pstmt2.setInt(1, tempOrder.getOrder_no());
+				rs2 = pstmt2.executeQuery();
+				Order orderWithOrderItem=null;
+				if(rs2.next()){
+					orderWithOrderItem = new Order(rs2.getInt("order_no"),rs2.getInt("order_price"),new Userinfo(rs2.getString("user_id")));
+					do {
+						orderWithOrderItem.getOrderItems()
+									.add(new OrderItem(rs2.getInt("oi_no"),
+														new Order(rs2.getInt("order_no")),new Lecture(rs2.getInt("l_no"),
+														rs2.getString("l_name"),rs2.getString("l_desc"),rs2.getInt("l_price"),
+														rs2.getString("l_image"),new LectureCategory(rs2.getInt("C_no")))));
+					}while(rs2.next());
+				}
+				orderList.set(i, orderWithOrderItem);
+			}
+		
+		}finally {
+				if(con!=null) {
+					con.close();
+				}
+			}
+		
+		return orderList;
+	}
 	
 	
 	

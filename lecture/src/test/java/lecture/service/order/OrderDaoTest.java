@@ -63,5 +63,13 @@ class OrderDaoTest {
 		}
 		
 	}*/
+	@Test
+	void testfindOrderWithOrderItemByOrderNo()throws Exception{
+		List<Order> orders = orderDao.findOrderWithOrderItemByOrderNo(1);
+
+        assertNotNull(orders);
+        System.out.println(orders);
+        assertEquals(1, orders.size());
+	}
 
 }

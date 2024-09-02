@@ -53,10 +53,11 @@ public class LectureDao {
 		
 		return lectureList;
 	}
-	public LectureCategory findByCNo(int C_no) throws Exception{
+	public LectureCategory findByCNo(int c_no) throws Exception{
 		LectureCategory category=null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(LectureSQL.LECTURECATEGORY_SELECT_BY_NO);
+		pstmt.setInt(1, c_no);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			category=new LectureCategory(
@@ -78,8 +79,9 @@ public class LectureDao {
 		
 		return categoryList;
 	}
-	//ORDER_SELECT_WITH_LECTURE_BY_USER_ID
+		//ORDER_SELECT_WITH_LECTURE_BY_USER_ID
 		//L_NAME L_DESC L_IMAGE
+		//userid로 lecture 찾기
 		public List<Lecture> findOrderWithLecture(String sUserId) throws Exception{
 			List<Lecture> LectureorderList = new ArrayList<>();
 			Lecture lecture = new Lecture();
@@ -107,5 +109,6 @@ public class LectureDao {
 			
 			return LectureorderList;
 		}
+		
 
 }
