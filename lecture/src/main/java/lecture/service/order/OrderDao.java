@@ -130,7 +130,7 @@ public class OrderDao {
 	}
 	
 	
-	//주문+주문아이템 전체(특정사용자)
+	//주문+주문아이템 전체(특정사용자) with order_no
 	public List<Order> findOrderWithOrderItemByUserId(String sUserId)throws Exception{
 		List<Order> orderList = new ArrayList<Order>();
 		Connection con = null;
@@ -174,6 +174,9 @@ public class OrderDao {
 		
 		return orderList;
 	}
+	
+	//주문+주문아이템 전체(특정사용자) with user_id
+	
 	
 	
 }
