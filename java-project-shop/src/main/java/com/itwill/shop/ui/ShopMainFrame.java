@@ -265,7 +265,7 @@ public class ShopMainFrame extends JFrame {
 		productImageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon("C:\\Users\\itwill\\Pictures\\50bigle.jpg"));
-		productImageLabel.setBounds(0, 10, 50, 55);
+		productImageLabel.setBounds(0, 10, 51, 50);
 		productPanel.add(productImageLabel);
 		
 		JLabel productNameLabel = new JLabel("비글");

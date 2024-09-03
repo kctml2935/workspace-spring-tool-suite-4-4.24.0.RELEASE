@@ -9,21 +9,21 @@ insert into lecture_category(C_no,C_name) values(lecture_category_C_no_SEQ.nextv
 insert into lecture_category(C_no,C_name) values(lecture_category_C_no_SEQ.nextval,'사진/영상');
 
 --카테고리 1번의 강의들 강의번호 1~3번
-insert into lecture values(lecture_l_no_SEQ.nextval,'JAVA','',100000,'.png',1);
-insert into lecture values(lecture_l_no_SEQ.nextval,'C++','',80000,'.jpg',1);
-insert into lecture values(lecture_l_no_SEQ.nextval,'Python','',60000,'',1);
+insert into lecture values(lecture_l_no_SEQ.nextval,'JAVA','기타 상세 정보 등...',100000,'java.png',1);
+insert into lecture values(lecture_l_no_SEQ.nextval,'C++','기타 상세 정보 등...',80000,'c++.png',1);
+insert into lecture values(lecture_l_no_SEQ.nextval,'Python','기타 상세 정보 등...',60000,'python.png',1);
 
 --카테고리 2번의 강의들 강의번호 4~7번
-insert into lecture values(lecture_l_no_SEQ.nextval,'블렌더','desc',120000,'image',2);
-insert into lecture values(lecture_l_no_SEQ.nextval,'zbrush','',200000,'',2);
-insert into lecture values(lecture_l_no_SEQ.nextval,'maya','',300000,'',2);
-insert into lecture values(lecture_l_no_SEQ.nextval,'3dsMax','',350000,'',2);
+insert into lecture values(lecture_l_no_SEQ.nextval,'블렌더','기타 상세 정보 등...',120000,'blender.png',2);
+insert into lecture values(lecture_l_no_SEQ.nextval,'zbrush','기타 상세 정보 등...',200000,'zbrush.jpeg',2);
+insert into lecture values(lecture_l_no_SEQ.nextval,'maya','기타 상세 정보 등...',300000,'maya.png',2);
+insert into lecture values(lecture_l_no_SEQ.nextval,'3dsMax','기타 상세 정보 등...',350000,'3DSMAX.jpg',2);
 
 --카테고리 3번의 강의들 강의번호 8~11번
-insert into lecture values(lecture_l_no_SEQ.nextval,'에프터이펙트','desc',130000,'image',3);
-insert into lecture values(lecture_l_no_SEQ.nextval,'포토샵','',50000,'',3);
-insert into lecture values(lecture_l_no_SEQ.nextval,'프리미어프로','',70000,'',3);
-insert into lecture values(lecture_l_no_SEQ.nextval,'다빈치리졸브','',30000,'',3);
+insert into lecture values(lecture_l_no_SEQ.nextval,'에프터이펙트','기타 상세 정보 등...',130000,'aftereffect.jpg',3);
+insert into lecture values(lecture_l_no_SEQ.nextval,'포토샵','기타 상세 정보 등...',50000,'photoshop.jpg',3);
+insert into lecture values(lecture_l_no_SEQ.nextval,'프리미어프로','기타 상세 정보 등...',70000,'premierpro.png',3);
+insert into lecture values(lecture_l_no_SEQ.nextval,'다빈치리졸브','기타 상세 정보 등...',30000,'davinchi.png',3);
 
 --aaa주문
 insert into orders(order_no,order_price,user_id) values(orders_order_no_SEQ.nextval,270000,'aaa');

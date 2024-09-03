@@ -12,13 +12,16 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import javax.swing.JPasswordField;
 
 public class LoginDialog extends JDialog {
 	LectureMainFrame lectureMainFrame; 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
-	private JTextField textField_1;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -70,11 +73,6 @@ public class LoginDialog extends JDialog {
 		contentPanel.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(203, 97, 116, 21);
-		contentPanel.add(textField_1);
-		textField_1.setColumns(10);
-		
 		JLabel lblNewLabel = new JLabel("아이디");
 		lblNewLabel.setBounds(90, 48, 57, 15);
 		contentPanel.add(lblNewLabel);
@@ -82,21 +80,9 @@ public class LoginDialog extends JDialog {
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
 		lblNewLabel_1.setBounds(90, 100, 57, 15);
 		contentPanel.add(lblNewLabel_1);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(203, 97, 116, 21);
+		contentPanel.add(passwordField);
 	}
 }
