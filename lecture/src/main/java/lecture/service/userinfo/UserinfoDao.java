@@ -63,4 +63,29 @@ public class UserinfoDao {
 		int userCount = rs.getInt(1);
 		return userCount;
 	}
+	//로그인을 하기위해 아이디, 비밀번호 입력결과가 맞는지를 검증
+	public int findByUserIdAndPassword(String user_id, String password) throws Exception{
+		int Count=0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		try {
+			pstmt = con.prepareStatement(UserinfoSQL.USER_LOGIN);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Count = 1;
+			}else {
+				Count = 0;
+			}
+		}catch (Exception e) {
+			throw e;
+		}
+		
+		
+		return Count;
+	}
 }
