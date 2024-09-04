@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.JToolBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JMenuBar;
 import javax.swing.JSeparator;
@@ -16,13 +17,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
+import java.awt.Rectangle;
+
 import javax.swing.border.LineBorder;
+
+
+import lecture.service.lecture.Lecture;
+import lecture.service.lecture.LectureService;
+import lecture.service.order.OrderDao;
+import lecture.service.order.OrderService;
+import lecture.service.userinfo.Userinfo;
+
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+
 import javax.swing.JButton;
 import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
+import java.util.Collections;
+import java.util.List;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
@@ -32,7 +49,15 @@ public class LectureMainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private String userid = null;
+	private LectureService lectureService;
+	private OrderService order;
+	private JPanel programmingcontentpanel;
+	private JPanel photocontentpanel;
+	private JPanel designcontentpanel;
+	private JPanel userPanel;
+	private JPanel userTitlePanel;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -48,7 +73,9 @@ public class LectureMainFrame extends JFrame {
 			}
 		});
 	}
-
+	public void setUserid(String userid) {
+		this.userid=userid;
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -81,6 +108,12 @@ public class LectureMainFrame extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("로그아웃");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Logout action
+                setUserid(null);
+            }
+        });
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JSeparator separator = new JSeparator();
@@ -115,318 +148,178 @@ public class LectureMainFrame extends JFrame {
 		recommendedcontentpanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setColumnHeaderView(recommendedcontentpanel);
 		recommendedcontentpanel.setLayout(null);
+		//여기서부터 강의1개 ui패널 디자인
+		JPanel lecturePanel = new JPanel();
+		lecturePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lecturePanel.setBounds(12, 5, 170, 190);
+		lecturePanel.setPreferredSize(new Dimension(170, 190));
+		recommendedcontentpanel.add(lecturePanel);
+		lecturePanel.setLayout(null);
 		
-		JPanel javapanel = new JPanel();
-		javapanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		javapanel.setBounds(12, 5, 170, 190);
-		javapanel.setPreferredSize(new Dimension(170, 190));
-		recommendedcontentpanel.add(javapanel);
-		javapanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("여기에 강의명 입력");
-		lblNewLabel.setBounds(12, 155, 132, 25);
-		javapanel.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("수강버튼");
-		btnNewButton.setBounds(12, 122, 97, 23);
-		javapanel.add(btnNewButton);
+		JLabel lecturedescLabel = new JLabel("여기에 강의명 입력");
+		lecturedescLabel.setBounds(12, 155, 132, 25);
+		lecturePanel.add(lecturedescLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\itwill\\Desktop\\java.jpg"));
-		lblNewLabel_1.setBounds(12, 10, 112, 83);
-		javapanel.add(lblNewLabel_1);
+		JButton lectureAddButton = new JButton("수강버튼");
+		lectureAddButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(">>강의담기");
+			}
+		});
+		lectureAddButton.setBounds(12, 122, 97, 23);
+		lecturePanel.add(lectureAddButton);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(197, 5, 170, 190);
-		panel_1.setLayout(null);
-		panel_1.setPreferredSize(new Dimension(170, 190));
-		recommendedcontentpanel.add(panel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_2.setBounds(12, 155, 132, 25);
-		panel_1.add(lblNewLabel_2);
-		
-		JButton btnNewButton_1 = new JButton("수강버튼");
-		btnNewButton_1.setBounds(12, 122, 97, 23);
-		panel_1.add(btnNewButton_1);
-		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\itwill\\Desktop\\photoshop.jpg"));
-		lblNewLabel_4.setBounds(12, 10, 113, 82);
-		panel_1.add(lblNewLabel_4);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(12, 205, 170, 190);
-		panel_2.setLayout(null);
-		panel_2.setPreferredSize(new Dimension(170, 190));
-		recommendedcontentpanel.add(panel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_3.setBounds(12, 155, 132, 25);
-		panel_2.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("이미지 넣는곳");
-		lblNewLabel_1_2.setIcon(new ImageIcon("C:\\Users\\itwill\\Desktop\\3DSMAX.jpg"));
-		lblNewLabel_1_2.setBounds(12, 10, 107, 82);
-		panel_2.add(lblNewLabel_1_2);
-		
-		JButton btnNewButton_2 = new JButton("수강버튼");
-		btnNewButton_2.setBounds(12, 122, 97, 23);
-		panel_2.add(btnNewButton_2);
-		
+		JLabel lectureImageLabel = new JLabel("");
+		lectureImageLabel.setIcon(new ImageIcon(Lecture.class.getResource("/images/java.jpg")));
+		lectureImageLabel.setBounds(12, 10, 112, 83);
+		lecturePanel.add(lectureImageLabel);
+		//끝
 		JPanel category1 = new JPanel();
 		tabbedPane.addTab("프로그래밍", null, category1, null);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setPreferredSize(new Dimension(390, 780));
-		category1.add(scrollPane_1);
+		JScrollPane lecturecategory1ScrollPanel = new JScrollPane();
+		lecturecategory1ScrollPanel.setPreferredSize(new Dimension(390, 780));
+		category1.add(lecturecategory1ScrollPanel);
 		
 		JPanel programmingcontentpanel = new JPanel();
 		programmingcontentpanel.setLayout(null);
 		programmingcontentpanel.setPreferredSize(new Dimension(390, 780));
 		programmingcontentpanel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane_1.setColumnHeaderView(programmingcontentpanel);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setLayout(null);
-		panel_3.setPreferredSize(new Dimension(170, 190));
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(12, 5, 170, 190);
-		programmingcontentpanel.add(panel_3);
-		
-		JLabel lblNewLabel_5 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_5.setBounds(12, 155, 132, 25);
-		panel_3.add(lblNewLabel_5);
-		
-		JButton btnNewButton_3 = new JButton("수강버튼");
-		btnNewButton_3.setBounds(12, 122, 97, 23);
-		panel_3.add(btnNewButton_3);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("");
-		lblNewLabel_1_1.setIcon(new ImageIcon("C:\\Users\\itwill\\Desktop\\java.jpg"));
-		lblNewLabel_1_1.setBounds(12, 10, 112, 83);
-		panel_3.add(lblNewLabel_1_1);
-		
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setLayout(null);
-		panel_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1_1.setBounds(197, 5, 170, 190);
-		programmingcontentpanel.add(panel_1_1);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_2_1.setBounds(12, 155, 132, 25);
-		panel_1_1.add(lblNewLabel_2_1);
-		
-		JButton btnNewButton_1_1 = new JButton("수강버튼");
-		btnNewButton_1_1.setBounds(12, 122, 97, 23);
-		panel_1_1.add(btnNewButton_1_1);
-		
-		JLabel lblNewLabel_4_1 = new JLabel("");
-		lblNewLabel_4_1.setIcon(new ImageIcon("C:\\Users\\itwill\\Desktop\\c++.png"));
-		lblNewLabel_4_1.setBounds(12, 10, 113, 82);
-		panel_1_1.add(lblNewLabel_4_1);
-		
-		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setLayout(null);
-		panel_2_1.setPreferredSize(new Dimension(170, 190));
-		panel_2_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2_1.setBounds(12, 205, 170, 190);
-		programmingcontentpanel.add(panel_2_1);
-		
-		JLabel lblNewLabel_3_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_3_1.setBounds(12, 155, 132, 25);
-		panel_2_1.add(lblNewLabel_3_1);
-		
-		JButton btnNewButton_2_1 = new JButton("수강버튼");
-		btnNewButton_2_1.setBounds(12, 122, 97, 23);
-		panel_2_1.add(btnNewButton_2_1);
-		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		lblNewLabel_6.setBounds(12, 50, 57, 15);
-		panel_2_1.add(lblNewLabel_6);
-		
+		lecturecategory1ScrollPanel.setColumnHeaderView(programmingcontentpanel);
+		//카테고리1끝
 		JPanel category2 = new JPanel();
 		tabbedPane.addTab("3D디자인", null, category2, null);
 		
-		JScrollPane scrollPane_1_1 = new JScrollPane();
-		scrollPane_1_1.setPreferredSize(new Dimension(390, 780));
-		category2.add(scrollPane_1_1);
+		JScrollPane lecturecategory2ScrollPanel = new JScrollPane();
+		lecturecategory2ScrollPanel.setPreferredSize(new Dimension(390, 780));
+		category2.add(lecturecategory2ScrollPanel);
 		
 		JPanel designcontentpanel = new JPanel();
 		designcontentpanel.setLayout(null);
 		designcontentpanel.setPreferredSize(new Dimension(390, 780));
 		designcontentpanel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane_1_1.setColumnHeaderView(designcontentpanel);
-		
-		JPanel panel_3_1 = new JPanel();
-		panel_3_1.setLayout(null);
-		panel_3_1.setPreferredSize(new Dimension(170, 190));
-		panel_3_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3_1.setBounds(12, 5, 170, 190);
-		designcontentpanel.add(panel_3_1);
-		
-		JLabel lblNewLabel_5_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_5_1.setBounds(12, 155, 132, 25);
-		panel_3_1.add(lblNewLabel_5_1);
-		
-		JButton btnNewButton_3_1 = new JButton("수강버튼");
-		btnNewButton_3_1.setBounds(12, 122, 97, 23);
-		panel_3_1.add(btnNewButton_3_1);
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("");
-		lblNewLabel_1_1_1.setBounds(12, 10, 112, 83);
-		panel_3_1.add(lblNewLabel_1_1_1);
-		
-		JPanel panel_1_1_1 = new JPanel();
-		panel_1_1_1.setLayout(null);
-		panel_1_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_1_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1_1_1.setBounds(197, 5, 170, 190);
-		designcontentpanel.add(panel_1_1_1);
-		
-		JLabel lblNewLabel_2_1_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_2_1_1.setBounds(12, 155, 132, 25);
-		panel_1_1_1.add(lblNewLabel_2_1_1);
-		
-		JButton btnNewButton_1_1_1 = new JButton("수강버튼");
-		btnNewButton_1_1_1.setBounds(12, 122, 97, 23);
-		panel_1_1_1.add(btnNewButton_1_1_1);
-		
-		JLabel lblNewLabel_4_1_1 = new JLabel("");
-		lblNewLabel_4_1_1.setBounds(12, 10, 113, 82);
-		panel_1_1_1.add(lblNewLabel_4_1_1);
-		
-		JPanel panel_2_1_1 = new JPanel();
-		panel_2_1_1.setLayout(null);
-		panel_2_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_2_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2_1_1.setBounds(12, 205, 170, 190);
-		designcontentpanel.add(panel_2_1_1);
-		
-		JLabel lblNewLabel_3_1_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_3_1_1.setBounds(12, 155, 132, 25);
-		panel_2_1_1.add(lblNewLabel_3_1_1);
-		
-		JButton btnNewButton_2_1_1 = new JButton("수강버튼");
-		btnNewButton_2_1_1.setBounds(12, 122, 97, 23);
-		panel_2_1_1.add(btnNewButton_2_1_1);
-		
-		JLabel lblNewLabel_6_1 = new JLabel("New label");
-		lblNewLabel_6_1.setBounds(12, 50, 57, 15);
-		panel_2_1_1.add(lblNewLabel_6_1);
-		
-		JPanel panel_2_1_1_1_2 = new JPanel();
-		panel_2_1_1_1_2.setLayout(null);
-		panel_2_1_1_1_2.setPreferredSize(new Dimension(170, 190));
-		panel_2_1_1_1_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2_1_1_1_2.setBounds(197, 205, 170, 190);
-		designcontentpanel.add(panel_2_1_1_1_2);
-		
-		JLabel lblNewLabel_3_1_1_1_2 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_3_1_1_1_2.setBounds(12, 155, 132, 25);
-		panel_2_1_1_1_2.add(lblNewLabel_3_1_1_1_2);
-		
-		JButton btnNewButton_2_1_1_1_2 = new JButton("수강버튼");
-		btnNewButton_2_1_1_1_2.setBounds(12, 122, 97, 23);
-		panel_2_1_1_1_2.add(btnNewButton_2_1_1_1_2);
-		
-		JLabel lblNewLabel_6_1_1_2 = new JLabel("New label");
-		lblNewLabel_6_1_1_2.setBounds(12, 50, 57, 15);
-		panel_2_1_1_1_2.add(lblNewLabel_6_1_1_2);
-		
+		lecturecategory2ScrollPanel.setColumnHeaderView(designcontentpanel);
+		//카테고리2끝
 		JPanel category3 = new JPanel();
+		
 		tabbedPane.addTab("사진/영상", null, category3, null);
 		
-		JScrollPane scrollPane_1_1_1 = new JScrollPane();
-		scrollPane_1_1_1.setPreferredSize(new Dimension(390, 780));
-		category3.add(scrollPane_1_1_1);
+		JScrollPane lecturecategory3ScrollPanel = new JScrollPane();
+		lecturecategory3ScrollPanel.setPreferredSize(new Dimension(390, 780));
+		category3.add(lecturecategory3ScrollPanel);
 		
 		JPanel photocontentpanel = new JPanel();
 		photocontentpanel.setLayout(null);
 		photocontentpanel.setPreferredSize(new Dimension(390, 780));
 		photocontentpanel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane_1_1_1.setColumnHeaderView(photocontentpanel);
-		
-		JPanel panel_3_1_1 = new JPanel();
-		panel_3_1_1.setLayout(null);
-		panel_3_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_3_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3_1_1.setBounds(12, 5, 170, 190);
-		photocontentpanel.add(panel_3_1_1);
-		
-		JLabel lblNewLabel_5_1_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_5_1_1.setBounds(12, 155, 132, 25);
-		panel_3_1_1.add(lblNewLabel_5_1_1);
-		
-		JButton btnNewButton_3_1_1 = new JButton("수강버튼");
-		btnNewButton_3_1_1.setBounds(12, 122, 97, 23);
-		panel_3_1_1.add(btnNewButton_3_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("");
-		lblNewLabel_1_1_1_1.setBounds(12, 10, 112, 83);
-		panel_3_1_1.add(lblNewLabel_1_1_1_1);
-		
-		JPanel panel_1_1_1_1 = new JPanel();
-		panel_1_1_1_1.setLayout(null);
-		panel_1_1_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_1_1_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1_1_1_1.setBounds(197, 5, 170, 190);
-		photocontentpanel.add(panel_1_1_1_1);
-		
-		JLabel lblNewLabel_2_1_1_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_2_1_1_1.setBounds(12, 155, 132, 25);
-		panel_1_1_1_1.add(lblNewLabel_2_1_1_1);
-		
-		JButton btnNewButton_1_1_1_1 = new JButton("수강버튼");
-		btnNewButton_1_1_1_1.setBounds(12, 122, 97, 23);
-		panel_1_1_1_1.add(btnNewButton_1_1_1_1);
-		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1.setBounds(12, 10, 113, 82);
-		panel_1_1_1_1.add(lblNewLabel_4_1_1_1);
-		
-		JPanel panel_2_1_1_1 = new JPanel();
-		panel_2_1_1_1.setLayout(null);
-		panel_2_1_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_2_1_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2_1_1_1.setBounds(12, 205, 170, 190);
-		photocontentpanel.add(panel_2_1_1_1);
-		
-		JLabel lblNewLabel_3_1_1_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_3_1_1_1.setBounds(12, 155, 132, 25);
-		panel_2_1_1_1.add(lblNewLabel_3_1_1_1);
-		
-		JButton btnNewButton_2_1_1_1 = new JButton("수강버튼");
-		btnNewButton_2_1_1_1.setBounds(12, 122, 97, 23);
-		panel_2_1_1_1.add(btnNewButton_2_1_1_1);
-		
-		JLabel lblNewLabel_6_1_1 = new JLabel("New label");
-		lblNewLabel_6_1_1.setBounds(12, 50, 57, 15);
-		panel_2_1_1_1.add(lblNewLabel_6_1_1);
-		
-		JPanel panel_2_1_1_1_1 = new JPanel();
-		panel_2_1_1_1_1.setLayout(null);
-		panel_2_1_1_1_1.setPreferredSize(new Dimension(170, 190));
-		panel_2_1_1_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2_1_1_1_1.setBounds(197, 205, 170, 190);
-		photocontentpanel.add(panel_2_1_1_1_1);
-		
-		JLabel lblNewLabel_3_1_1_1_1 = new JLabel("여기에 강의명 입력");
-		lblNewLabel_3_1_1_1_1.setBounds(12, 155, 132, 25);
-		panel_2_1_1_1_1.add(lblNewLabel_3_1_1_1_1);
-		
-		JButton btnNewButton_2_1_1_1_1 = new JButton("수강버튼");
-		btnNewButton_2_1_1_1_1.setBounds(12, 122, 97, 23);
-		panel_2_1_1_1_1.add(btnNewButton_2_1_1_1_1);
-		
-		JLabel lblNewLabel_6_1_1_1 = new JLabel("New label");
-		lblNewLabel_6_1_1_1.setBounds(12, 50, 57, 15);
-		panel_2_1_1_1_1.add(lblNewLabel_6_1_1_1);
+		lecturecategory3ScrollPanel.setColumnHeaderView(photocontentpanel);
+		//카테고리3끝
 		
 		JPanel userpanel = new JPanel();
 		tabbedPane.addTab("", new ImageIcon("C:\\Users\\itwill\\Pictures\\user20.png"), userpanel, null);
+		
+		JScrollPane userScrollPane = new JScrollPane();
+		userScrollPane.setPreferredSize(new Dimension(390, 780));
+		userpanel.add(userScrollPane);
+		
+		JPanel orderContentpanel = new JPanel();
+		userScrollPane.setColumnHeaderView(orderContentpanel);
+		
+		
+		
+	
+	}
+	//996
+	public void displayOrder() throws Exception{
+		userPanel.removeAll();
+		
+	}
+	//1638라인
+	public void displayLectureprogrammingList() throws Exception{
+		List<Lecture> lectureList = lectureService.lectureList();
+		Collections.shuffle(lectureList);
+		
+		for(int i=0;i<lectureList.size();i++) {
+			Lecture lecture = lectureList.get(i);
+			JPanel lecturePanel = new JPanel();
+			lecturePanel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+			lecturePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
+			lecturePanel.setBounds(new Rectangle(0, 0, 120, 120));
+			lecturePanel.setMaximumSize(new Dimension(200, 200));
+			lecturePanel.setMinimumSize(new Dimension(150, 150));
+			lecturePanel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			lecturePanel.setBackground(Color.WHITE);
+			lecturePanel.setBorder(null);
+			lecturePanel.setSize(new Dimension(120, 120));
+			lecturePanel.setPreferredSize(new Dimension(170, 190));
+			lecturePanel.setLayout(null);
+			JLabel lectureImageLabel = new JLabel("");
+			lectureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+			lectureImageLabel
+					.setIcon(new ImageIcon(LectureMainFrame.class.getResource("/images/" + lecture.getL_image())));
+			lectureImageLabel.setBounds(3, 1, 162, 116);
+			lecturePanel.add(lectureImageLabel);
+			
+			JLabel lectureDescLabel = new JLabel("<html><font size='3'>" + "강의 이름: " + lecture.getL_name() + "<br>"
+					+ "가격: " + new DecimalFormat("#,###").format(lecture.getL_price()) + "<br>" + "설명: "
+					+ lecture.getL_desc() + "</font></html>");
+
+			lectureDescLabel.setVerticalAlignment(SwingConstants.TOP);
+			lectureDescLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+			lectureDescLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			lectureDescLabel.setBounds(3, 143, 164, 47);
+			lecturePanel.add(lectureDescLabel);
+			
+			JButton lectureAddButton = new JButton("");
+			lectureAddButton.addActionListener(new ActionListener() {
+				private Lecture l = lecture;
+
+				public void actionPerformed(ActionEvent e) {
+
+					if (userid != null) {
+						// 로그인했을때
+						/****************** 카트에담기 ***************/
+						try {
+							order.create(userid, l.getL_no());
+							JOptionPane.showMessageDialog(null, "장바구니에 제품이담겼습니다");
+
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						/*******************************************/
+
+					} else {
+						// 로그인안했을때
+						/****************** 로그인다이알로그뛰우기 ***************/
+						LoginDialog loginDialog;
+						try {
+							loginDialog = new LoginDialog();
+							loginDialog.setLectureMainFrame(LectureMainFrame.this);
+							loginDialog.setVisible(true);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+					}
+
+				}
+			});
+			lectureAddButton.setBorder(null);
+			lectureAddButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			lectureAddButton.setOpaque(false);
+			lectureAddButton.setBackground(Color.WHITE);
+			lectureAddButton.setForeground(Color.WHITE);
+			lectureAddButton.setBounds(136, 119, 31, 23);
+			lecturePanel.add(lectureAddButton);
+			
+			
+			programmingcontentpanel.add(lecturePanel);
+			
+		}
+		
 	}
 }

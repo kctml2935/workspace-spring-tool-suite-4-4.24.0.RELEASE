@@ -9,13 +9,13 @@ insert into lecture_category(C_no,C_name) values(lecture_category_C_no_SEQ.nextv
 insert into lecture_category(C_no,C_name) values(lecture_category_C_no_SEQ.nextval,'사진/영상');
 
 --카테고리 1번의 강의들 강의번호 1~3번
-insert into lecture values(lecture_l_no_SEQ.nextval,'JAVA','기타 상세 정보 등...',100000,'java.png',1);
+insert into lecture values(lecture_l_no_SEQ.nextval,'JAVA','기타 상세 정보 등...',100000,'java.jpg',1);
 insert into lecture values(lecture_l_no_SEQ.nextval,'C++','기타 상세 정보 등...',80000,'c++.png',1);
 insert into lecture values(lecture_l_no_SEQ.nextval,'Python','기타 상세 정보 등...',60000,'python.png',1);
 
 --카테고리 2번의 강의들 강의번호 4~7번
 insert into lecture values(lecture_l_no_SEQ.nextval,'블렌더','기타 상세 정보 등...',120000,'blender.png',2);
-insert into lecture values(lecture_l_no_SEQ.nextval,'zbrush','기타 상세 정보 등...',200000,'zbrush.jpeg',2);
+insert into lecture values(lecture_l_no_SEQ.nextval,'zbrush','기타 상세 정보 등...',200000,'zbrush.jpg',2);
 insert into lecture values(lecture_l_no_SEQ.nextval,'maya','기타 상세 정보 등...',300000,'maya.png',2);
 insert into lecture values(lecture_l_no_SEQ.nextval,'3dsMax','기타 상세 정보 등...',350000,'3DSMAX.jpg',2);
 

@@ -29,7 +29,7 @@ public class LoginDialog extends JDialog {
 	private JTextField textField;
 	private UserService user;
 	private JTextField textField_1;
-
+	private String userid;
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +55,7 @@ public class LoginDialog extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
+
 		JButton btnNewButton = new JButton("로그인");
 		user = new UserService();
 		btnNewButton.addActionListener(new ActionListener() {
@@ -66,6 +66,7 @@ public class LoginDialog extends JDialog {
 					if(user.login(userid, password)) {
 					lectureMainFrame.setTitle("로그인성공");
 					JOptionPane.showMessageDialog(null, "로그인성공");
+					lectureMainFrame.setUserid(userid);
 					dispose();
 					return;
 					}
@@ -76,6 +77,7 @@ public class LoginDialog extends JDialog {
 				dispose();
 			}
 		});
+		
 		btnNewButton.setBounds(90, 139, 97, 23);
 		contentPanel.add(btnNewButton);
 		
@@ -93,6 +95,7 @@ public class LoginDialog extends JDialog {
 				join.setVisible(true);
 			}
 		});
+		
 		btnNewButton_1.setBounds(274, 139, 97, 23);
 		contentPanel.add(btnNewButton_1);
 		
