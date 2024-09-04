@@ -14,13 +14,13 @@ public class UserService {
 		return rowCount;
 		}
 	}
-	//아이디비번 맞으면 1 아니면 0
-	public int login(String user_id,String password) throws Exception{
-		int result = 0;
+	//아이디비번 맞으면 true 아니면 false
+	public boolean login(String user_id,String password) throws Exception{
+		boolean result = false;
 		if((userinfoDao.findByUserIdAndPassword(user_id, password))==1) {
-			result = 1;
+			result = true;
 		}else {
-			result = 0;
+			result = false;
 		}
 		
 		return result;

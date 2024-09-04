@@ -54,7 +54,7 @@ public class LectureMainFrame extends JFrame {
 	 */
 	public LectureMainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 300, 402);
+		setBounds(300, 300, 450, 450);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -65,7 +65,13 @@ public class LectureMainFrame extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("로그인");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginDialog loginDialog = new LoginDialog();
+				LoginDialog loginDialog = null;
+				try {
+					loginDialog = new LoginDialog();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				loginDialog.setLectureMainFrame(LectureMainFrame.this);
 				loginDialog.setModal(true);
 				loginDialog.setVisible(true);
@@ -110,25 +116,25 @@ public class LectureMainFrame extends JFrame {
 		scrollPane.setColumnHeaderView(recommendedcontentpanel);
 		recommendedcontentpanel.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(12, 5, 170, 190);
-		panel.setPreferredSize(new Dimension(170, 190));
-		recommendedcontentpanel.add(panel);
-		panel.setLayout(null);
+		JPanel javapanel = new JPanel();
+		javapanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		javapanel.setBounds(12, 5, 170, 190);
+		javapanel.setPreferredSize(new Dimension(170, 190));
+		recommendedcontentpanel.add(javapanel);
+		javapanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("여기에 강의명 입력");
 		lblNewLabel.setBounds(12, 155, 132, 25);
-		panel.add(lblNewLabel);
+		javapanel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("수강버튼");
 		btnNewButton.setBounds(12, 122, 97, 23);
-		panel.add(btnNewButton);
+		javapanel.add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\itwill\\Desktop\\java.jpg"));
 		lblNewLabel_1.setBounds(12, 10, 112, 83);
-		panel.add(lblNewLabel_1);
+		javapanel.add(lblNewLabel_1);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));

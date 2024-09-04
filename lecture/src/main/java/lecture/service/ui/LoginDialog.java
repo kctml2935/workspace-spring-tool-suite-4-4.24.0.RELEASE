@@ -8,20 +8,27 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import lecture.service.userinfo.UserService;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.JPasswordField;
+import javax.swing.JLayeredPane;
 
 public class LoginDialog extends JDialog {
 	LectureMainFrame lectureMainFrame; 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
-	private JPasswordField passwordField;
+	private UserService user;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -40,8 +47,9 @@ public class LoginDialog extends JDialog {
 	}
 	/**
 	 * Create the dialog.
+	 * @throws Exception 
 	 */
-	public LoginDialog() {
+	public LoginDialog() throws Exception {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,10 +57,22 @@ public class LoginDialog extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("로그인");
+		user = new UserService();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lectureMainFrame.setTitle("로그인성공");
-				lectureMainFrame.getContentPane().setBackground(Color.blue);
+				String userid = textField.getText();
+				String password = textField_1.getText();
+				try {
+					if(user.login(userid, password)) {
+					lectureMainFrame.setTitle("로그인성공");
+					JOptionPane.showMessageDialog(null, "로그인성공");
+					dispose();
+					return;
+					}
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "로그인실패");
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
@@ -62,7 +82,15 @@ public class LoginDialog extends JDialog {
 		JButton btnNewButton_1 = new JButton("회원가입");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				joinDialog join = null;
+				try {
+					join = new joinDialog();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				join.setLoginDialog(LoginDialog.this);
+				join.setModal(true);
+				join.setVisible(true);
 			}
 		});
 		btnNewButton_1.setBounds(274, 139, 97, 23);
@@ -81,8 +109,9 @@ public class LoginDialog extends JDialog {
 		lblNewLabel_1.setBounds(90, 100, 57, 15);
 		contentPanel.add(lblNewLabel_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(203, 97, 116, 21);
-		contentPanel.add(passwordField);
+		textField_1 = new JTextField();
+		textField_1.setBounds(203, 97, 116, 21);
+		contentPanel.add(textField_1);
+		textField_1.setColumns(10);
 	}
 }
