@@ -53,19 +53,27 @@ public class LectureDao {
 		
 		return lectureList;
 	}
-	public LectureCategory findByCNo(int c_no) throws Exception{
-		LectureCategory category=null;
+	
+	
+	
+	public 	List<Lecture> findByCNo(int c_no) throws Exception{
+		List<Lecture> categoryList= new ArrayList<Lecture>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(LectureSQL.LECTURECATEGORY_SELECT_BY_NO);
 		pstmt.setInt(1, c_no);
 		ResultSet rs = pstmt.executeQuery();
-		if(rs.next()) {
-			category=new LectureCategory(
-					rs.getInt("C_no"),
-					rs.getString("C_name"));
+		while(rs.next()) {
+			LectureCategory category = new LectureCategory(rs.getInt("C_no"));
+			Lecture lecture=new Lecture(rs.getInt("l_no"),
+					rs.getString("l_name"),
+					rs.getString("l_desc"),
+					rs.getInt("l_price"),
+					rs.getString("l_image"),
+					category);
+			categoryList.add(lecture);
 		}
 		
-		return category;
+		return categoryList;
 	}
 	public List<LectureCategory> findAllC() throws Exception{
 		List<LectureCategory> categoryList = new ArrayList<LectureCategory>();

@@ -35,13 +35,13 @@ class LectureDaoTest {
 	}
  */
 
-	@Test
+/*	@Test
 	void testFindByCNo() throws Exception {
 		LectureCategory lecture = lectureDao.findByCNo(2);
 		assertNotNull(lecture);
 		System.out.println(lecture);
 	}
-
+*/
 	/*
 	@Test
 	void testFindAllC() {

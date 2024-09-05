@@ -19,5 +19,9 @@ public class LectureService {
 	public List<Lecture> lectureDetailByuserId(String user_id) throws Exception{
 		return lectureDao.findOrderWithLecture(user_id);
 	}
+	//상품 카테고리번호로 보기
+	public List<Lecture> getlecturebyCategoryNo(int categoryNo) throws Exception{
+		return lectureDao.findByCNo(categoryNo);
+	}
 	
 }
