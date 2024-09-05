@@ -36,4 +36,7 @@ public class Order {
         }
         return orderItems;
     }
+	public List<OrderItem> getOrderItemList(){
+		return orderItems != null ? orderItems : new ArrayList<>();
+	}
 }

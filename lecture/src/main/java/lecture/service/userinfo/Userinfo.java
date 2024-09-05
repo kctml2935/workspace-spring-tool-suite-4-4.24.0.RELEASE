@@ -17,4 +17,5 @@ public class Userinfo {
 	public Userinfo(String user_id) {
 		this.user_id=user_id;
 	}
+	
 }

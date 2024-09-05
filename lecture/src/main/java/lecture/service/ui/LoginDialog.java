@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import lecture.service.userinfo.UserService;
+import lecture.service.userinfo.Userinfo;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -27,9 +28,8 @@ public class LoginDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
-	private UserService user;
+	private UserService userService;
 	private JTextField textField_1;
-	private String userid;
 	/**
 	 * Launch the application.
 	 */
@@ -49,7 +49,9 @@ public class LoginDialog extends JDialog {
 	 * Create the dialog.
 	 * @throws Exception 
 	 */
+	
 	public LoginDialog() throws Exception {
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -57,18 +59,22 @@ public class LoginDialog extends JDialog {
 		contentPanel.setLayout(null);
 
 		JButton btnNewButton = new JButton("로그인");
-		user = new UserService();
+		userService = new UserService();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String userid = textField.getText();
 				String password = textField_1.getText();
 				try {
-					if(user.login(userid, password)) {
+					if(userService.login(userid, password)) {
 					lectureMainFrame.setTitle("로그인성공");
 					JOptionPane.showMessageDialog(null, "로그인성공");
-					lectureMainFrame.setUserid(userid);
+					Userinfo loginUser = userService.findbyid(userid);
+					lectureMainFrame.loginProcess(loginUser);
+					lectureMainFrame.displayOrderList();
 					dispose();
 					return;
+					}else {
+						JOptionPane.showMessageDialog(null, "로그인실패");						
 					}
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "로그인실패");
@@ -117,4 +123,5 @@ public class LoginDialog extends JDialog {
 		contentPanel.add(textField_1);
 		textField_1.setColumns(10);
 	}
+	
 }

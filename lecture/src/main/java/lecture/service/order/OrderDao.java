@@ -147,7 +147,7 @@ public class OrderDao {
 				orderList.add(new Order(rs1.getInt("order_no"),rs1.getInt("order_price"),new Userinfo(rs1.getString("user_id"))));
 				
 			}
-			pstmt2 = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_ORDERITEM_BY_USER_ID);
+			pstmt2 = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_ORDERITEM_BY_ORDER_NO);
 			for (int i = 0; i < orderList.size(); i++) {
 				Order tempOrder = orderList.get(i);
 				pstmt2.setInt(1, tempOrder.getOrder_no());

@@ -33,6 +33,10 @@ public class UserService {
 			return false;
 		}
 	}
+	public Userinfo findbyid(String user_id) throws Exception{
+		
+		return userinfoDao.findByUserId(user_id);
+	}
 	
 	
 	
