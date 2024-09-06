@@ -82,6 +82,7 @@ public class LectureMainFrame extends JFrame {
 			}
 		});
 	}
+	//로그인 id 받아오기
 	public void loginProcess(Userinfo loginUser) throws Exception{
 		this.loginUser=loginUser;
 		setTitle(loginUser.getUsername());
@@ -98,6 +99,7 @@ public class LectureMainFrame extends JFrame {
 		JMenu mnNewMenu = new JMenu("회원");
 		menuBar.add(mnNewMenu);
 		
+		//로그인 다이얼로그.java파일 호출 후 로그인
 		JMenuItem mntmNewMenuItem = new JMenuItem("로그인");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -116,6 +118,7 @@ public class LectureMainFrame extends JFrame {
 		mntmNewMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
 		mnNewMenu.add(mntmNewMenuItem);
 		
+		//받아온 로그인아이디 null로 만들고 시스템종료
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("로그아웃");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -130,6 +133,7 @@ public class LectureMainFrame extends JFrame {
 		JSeparator separator = new JSeparator();
 		mnNewMenu.add(separator);
 		
+		//시스템종료
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("종료");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -521,6 +525,7 @@ public class LectureMainFrame extends JFrame {
 						try {
 							loginDialog = new LoginDialog();
 							loginDialog.setLectureMainFrame(LectureMainFrame.this);
+							loginDialog.setModal(true);
 							loginDialog.setVisible(true);
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
@@ -615,6 +620,7 @@ public class LectureMainFrame extends JFrame {
 						try {
 							loginDialog = new LoginDialog();
 							loginDialog.setLectureMainFrame(LectureMainFrame.this);
+							loginDialog.setModal(true);
 							loginDialog.setVisible(true);
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
@@ -705,6 +711,7 @@ public class LectureMainFrame extends JFrame {
 						try {
 							loginDialog = new LoginDialog();
 							loginDialog.setLectureMainFrame(LectureMainFrame.this);
+							loginDialog.setModal(true);
 							loginDialog.setVisible(true);
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
@@ -797,6 +804,7 @@ public class LectureMainFrame extends JFrame {
 						try {
 							loginDialog = new LoginDialog();
 							loginDialog.setLectureMainFrame(LectureMainFrame.this);
+							loginDialog.setModal(true);
 							loginDialog.setVisible(true);
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block

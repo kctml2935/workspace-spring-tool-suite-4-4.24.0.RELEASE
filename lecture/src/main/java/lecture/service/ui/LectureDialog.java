@@ -19,6 +19,9 @@ public class LectureDialog extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtjavabasic;
 	private JTextField txtjavabasic_1;
+	private JTextField txtjavabasic_2;
+	private JTextField txtjavabasic_3;
+	private JTextField txtjavabasic_4;
 
 	/**
 	 * Launch the application.
@@ -87,6 +90,78 @@ public class LectureDialog extends JDialog {
 						txtjavabasic_1.setColumns(10);
 						txtjavabasic_1.setBounds(100, 19, 116, 21);
 						panel_2.add(txtjavabasic_1);
+					}
+					{
+						JLabel lblNewLabel_1 = new JLabel("");
+						lblNewLabel_1.setIcon(new ImageIcon(LectureDialog.class.getResource("/images/video.jpg")));
+						lblNewLabel_1.setBounds(12, 5, 55, 55);
+						panel_2.add(lblNewLabel_1);
+					}
+				}
+				{
+					JPanel panel_3 = new JPanel();
+					panel_3.setLayout(null);
+					panel_3.setPreferredSize(new Dimension(350, 60));
+					panel.add(panel_3);
+					{
+						JButton btnNewButton_1 = new JButton("재생");
+						btnNewButton_1.setBounds(241, 18, 97, 23);
+						panel_3.add(btnNewButton_1);
+					}
+					{
+						txtjavabasic_2 = new JTextField();
+						txtjavabasic_2.setText("03.JAVABASIC");
+						txtjavabasic_2.setColumns(10);
+						txtjavabasic_2.setBounds(100, 19, 116, 21);
+						panel_3.add(txtjavabasic_2);
+					}
+					{
+						JLabel lblNewLabel_1 = new JLabel("");
+						lblNewLabel_1.setIcon(new ImageIcon(LectureDialog.class.getResource("/images/video.jpg")));
+						lblNewLabel_1.setBounds(12, 5, 55, 55);
+						panel_3.add(lblNewLabel_1);
+					}
+				}
+				{
+					JPanel panel_2 = new JPanel();
+					panel_2.setLayout(null);
+					panel_2.setPreferredSize(new Dimension(350, 60));
+					panel.add(panel_2);
+					{
+						JButton btnNewButton_1 = new JButton("재생");
+						btnNewButton_1.setBounds(241, 18, 97, 23);
+						panel_2.add(btnNewButton_1);
+					}
+					{
+						txtjavabasic_3 = new JTextField();
+						txtjavabasic_3.setText("04.JAVABASIC");
+						txtjavabasic_3.setColumns(10);
+						txtjavabasic_3.setBounds(100, 19, 116, 21);
+						panel_2.add(txtjavabasic_3);
+					}
+					{
+						JLabel lblNewLabel_1 = new JLabel("");
+						lblNewLabel_1.setIcon(new ImageIcon(LectureDialog.class.getResource("/images/video.jpg")));
+						lblNewLabel_1.setBounds(12, 5, 55, 55);
+						panel_2.add(lblNewLabel_1);
+					}
+				}
+				{
+					JPanel panel_2 = new JPanel();
+					panel_2.setLayout(null);
+					panel_2.setPreferredSize(new Dimension(350, 60));
+					panel.add(panel_2);
+					{
+						JButton btnNewButton_1 = new JButton("재생");
+						btnNewButton_1.setBounds(241, 18, 97, 23);
+						panel_2.add(btnNewButton_1);
+					}
+					{
+						txtjavabasic_4 = new JTextField();
+						txtjavabasic_4.setText("05.JAVABASIC");
+						txtjavabasic_4.setColumns(10);
+						txtjavabasic_4.setBounds(100, 19, 116, 21);
+						panel_2.add(txtjavabasic_4);
 					}
 					{
 						JLabel lblNewLabel_1 = new JLabel("");
