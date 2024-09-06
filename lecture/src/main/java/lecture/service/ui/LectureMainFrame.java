@@ -292,6 +292,16 @@ public class LectureMainFrame extends JFrame {
 		JLabel orderitemtotprice = new JLabel("0");
 		orderitempanel.add(orderitemtotprice);
 		
+		JButton deleteButton = new JButton("");
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JButton gotolectureButton = new JButton("");
+		orderitempanel.add(gotolectureButton);
+		orderitempanel.add(deleteButton);
+		
 		try {
 			displayLectureprogrammingList();
 			displayrecommendedList();
@@ -379,7 +389,7 @@ public class LectureMainFrame extends JFrame {
 			ordertitlePanel.add(orderItemDeleteButton);
 			/**********order item start************/
 			for(OrderItem orderItem: order.getOrderItemList()) {
-				System.out.println("aaa");
+				
 				JPanel orderitempanel = new JPanel();
 				orderitempanel.setLayout(null);
 				orderitempanel.setPreferredSize(new Dimension(350, 50));
@@ -391,20 +401,51 @@ public class LectureMainFrame extends JFrame {
 				orderitemimageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
 				orderitemimageLabel.setHorizontalTextPosition(SwingConstants.RIGHT);
 				orderitemimageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-				orderitemimageLabel.setBounds(85, 7, 50, 40);
+				orderitemimageLabel.setBounds(25, 7, 50, 40);
 				orderitempanel.add(orderitemimageLabel);
 				
-				JLabel orderitemdescLabel = new JLabel("<html><b>"+orderItem.getLecture().getL_name()+"</b> <br/> ￦ "+new DecimalFormat("0,000").format(orderItem.getLecture().getL_price())+"</html>");
+				JLabel orderitemdescLabel = new JLabel("<html><b>"+orderItem.getLecture().getL_name()+"</b> <br/> ");
 				orderitemdescLabel.setHorizontalAlignment(SwingConstants.CENTER);
 				orderitemdescLabel.setFont(new Font("D2Coding", Font.PLAIN, 13));
-				orderitemdescLabel.setBounds(147, 7, 100, 40);
+				orderitemdescLabel.setBounds(67, 7, 100, 40);
 				orderitempanel.add(orderitemdescLabel);
 				
 				JLabel orderitemtotprice = new JLabel("￦ "+new DecimalFormat("0,000").format(orderItem.getLecture().getL_price()));
 				orderitemtotprice.setHorizontalAlignment(SwingConstants.LEFT);
 				orderitemtotprice.setFont(new Font("D2Coding", Font.PLAIN, 13));
-				orderitemtotprice.setBounds(259, 6, 91, 41);
+				orderitemtotprice.setBounds(159, 7, 91, 41);
 				orderitempanel.add(orderitemtotprice);
+				
+				JButton gotolectureButton = new JButton("수강");
+				gotolectureButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
+				gotolectureButton.setBorder(null);
+				gotolectureButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				gotolectureButton.setOpaque(false);
+				gotolectureButton.setBounds(230, 7, 47, 40);
+				
+				orderitempanel.add(gotolectureButton);
+				
+				JButton deleteButton = new JButton("삭제");
+				deleteButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							orderservice.delete(loginUser.getUser_id());
+							JOptionPane.showMessageDialog(null, "강의가 삭제되었습니다.");
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+				});
+				deleteButton.setBorder(null);
+				deleteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				deleteButton.setOpaque(false);
+				deleteButton.setBounds(300, 7, 47, 40);
+				orderitempanel.add(deleteButton);
+				
 				orderContentpanel.add(orderitempanel);
 			}
 			
