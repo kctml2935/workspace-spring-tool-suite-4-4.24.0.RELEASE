@@ -32,7 +32,7 @@ public class joinDialog extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		try {
 			joinDialog dialog = new joinDialog();
@@ -42,6 +42,7 @@ public class joinDialog extends JDialog {
 			e.printStackTrace();
 		}
 	}
+*/
 
 	public void setLoginDialog(LoginDialog login) {
 		this.logindialog=login;
@@ -143,3 +144,4 @@ public class joinDialog extends JDialog {
 		}
 	}
 }
+

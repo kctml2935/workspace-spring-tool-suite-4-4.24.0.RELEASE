@@ -9,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import lecture.service.order.OrderService;
 import lecture.service.userinfo.UserService;
 import lecture.service.userinfo.Userinfo;
 
@@ -30,9 +31,10 @@ public class LoginDialog extends JDialog {
 	private JTextField textField;
 	private UserService userService;
 	private JTextField textField_1;
+	private OrderService orderservice;
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		try {
 			LoginDialog dialog = new LoginDialog();
@@ -42,6 +44,7 @@ public class LoginDialog extends JDialog {
 			e.printStackTrace();
 		}
 	}
+	*/
 	public void setLectureMainFrame(LectureMainFrame lectureMainFrame) {
 		this.lectureMainFrame=lectureMainFrame;
 	}
@@ -62,6 +65,12 @@ public class LoginDialog extends JDialog {
 		userService = new UserService();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					orderservice = new OrderService();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				String userid = textField.getText();
 				String password = textField_1.getText();
 				try {
@@ -70,6 +79,7 @@ public class LoginDialog extends JDialog {
 					JOptionPane.showMessageDialog(null, "로그인성공");
 					Userinfo loginUser = userService.findbyid(userid);
 					lectureMainFrame.loginProcess(loginUser);
+					
 					lectureMainFrame.displayOrderList();
 					dispose();
 					return;

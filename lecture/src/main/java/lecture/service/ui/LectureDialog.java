@@ -1,4 +1,4 @@
-package lecture.service.ui;
+/*package lecture.service.ui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -25,7 +25,7 @@ public class LectureDialog extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		try {
 			LectureDialog dialog = new LectureDialog();
@@ -39,6 +39,7 @@ public class LectureDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
+	/*
 	public LectureDialog() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -189,4 +190,4 @@ public class LectureDialog extends JDialog {
 			}
 		}
 	}
-}
+}*/

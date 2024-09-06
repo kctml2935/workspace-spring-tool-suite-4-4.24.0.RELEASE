@@ -65,7 +65,7 @@ public class LectureMainFrame extends JFrame {
 	private JPanel orderListpanel;
 	private JPanel recommendedcontentpanel;
 	private JLabel orderListLabel;
-	
+	private LectureMainFrame lecturemainframe;
 	
 	/**
 	 * Launch the application.
@@ -89,8 +89,11 @@ public class LectureMainFrame extends JFrame {
 	}
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public LectureMainFrame() {
+	//로그인한 아이디로 주문버튼 클릭시 다음실행할떄 그 아이디는 충돌
+	//
+	public LectureMainFrame() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 300, 450, 450);
 		
@@ -101,11 +104,13 @@ public class LectureMainFrame extends JFrame {
 		
 		//로그인 다이얼로그.java파일 호출 후 로그인
 		JMenuItem mntmNewMenuItem = new JMenuItem("로그인");
+		orderservice = new OrderService();
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginDialog loginDialog = null;
 				try {
 					loginDialog = new LoginDialog();
+					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -240,7 +245,7 @@ public class LectureMainFrame extends JFrame {
 		//카테고리3끝
 		
 		JPanel userpanel = new JPanel();
-		tabbedPane.addTab("", new ImageIcon("C:\\Users\\itwill\\Pictures\\user20.png"), userpanel, null);
+		tabbedPane.addTab("", new ImageIcon(LectureMainFrame.class.getResource("/images/user20.png")), userpanel, null);
 		
 		JScrollPane userScrollPane = new JScrollPane();
 		userScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -322,6 +327,7 @@ public class LectureMainFrame extends JFrame {
 	public void displayOrderList() throws Exception{
 		orderservice = new OrderService();
 		orderitem = new OrderItem();
+		
 		orderContentpanel.removeAll();
 		orderListpanel = new JPanel();
 		orderListpanel.setLayout(null);

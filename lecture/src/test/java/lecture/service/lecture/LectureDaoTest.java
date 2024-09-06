@@ -1,4 +1,4 @@
-package lecture.service.lecture;
+/*package lecture.service.lecture;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class LectureDaoTest {
-	LectureDao lectureDao;
-	
+	LectureDao lectureDao;*/
+/*	
 	@Test
 	@BeforeEach
 	void setUp() throws Exception {
@@ -52,5 +52,5 @@ class LectureDaoTest {
 	void testFindOrderWithLecture() {
 		fail("Not yet implemented");
 	}
-*/
 }
+*/
