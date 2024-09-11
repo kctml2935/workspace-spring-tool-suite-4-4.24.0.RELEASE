@@ -19,7 +19,7 @@ import java.io.PrintWriter;
     <url-pattern>/Annotation_Mapping</url-pattern>
   </servlet-mapping>
  */
-@WebServlet("/Annotation_Mapping")
+@WebServlet("/annotation_mapping")
 public class AnnotationMappingServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

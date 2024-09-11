@@ -18,6 +18,7 @@ public class LifeCycleCounterImageServlet extends HttpServlet {
 		/*
 		 * 응답헤더의 contentType설정
 		 */
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out =response.getWriter();
 		out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
@@ -38,7 +39,6 @@ public class LifeCycleCounterImageServlet extends HttpServlet {
 		for (char c : no) {
 			out.println("<img src='"+c+".png'>");
 		}
-		
 		out.println(" 번입니다");
 		out.println("	</center>");
 		out.println("</body>");
