@@ -51,7 +51,7 @@ public class AddressListServlet extends HttpServlet {
 			out.println("<div>");
 			out.println("	<ul>");
 			for (Address address : addressList) {				
-			out.println("		<li><a href='address_detail?no=%d'>[%d]%s</a></li>");
+			out.printf("		<li><a href='address_detail?no=%d'>[%d]%s</a></li>",address.getNo(),address.getNo(),address.getName());
 			}
 			out.println("	</ul>");
 			out.println("</div>");
