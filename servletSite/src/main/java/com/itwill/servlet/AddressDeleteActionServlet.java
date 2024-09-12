@@ -35,7 +35,17 @@ public class AddressDeleteActionServlet extends HttpServlet {
 		*/ 
 		
 		try {
+			request.setCharacterEncoding("UTF-8");
+			String noStr=request.getParameter("no");
 			
+			if(noStr==null || noStr.equals("")) {
+				response.sendRedirect("address_list");
+				return;
+			}
+			AddressService addressService = new AddressService();
+			addressService.addressDelete(Integer.parseInt(noStr));
+			
+			response.sendRedirect("address_list");
 		} catch (Exception e) {
 			e.printStackTrace();
 

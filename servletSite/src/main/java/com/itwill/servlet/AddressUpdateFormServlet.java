@@ -43,6 +43,8 @@ public class AddressUpdateFormServlet extends HttpServlet {
 			 */
 			request.setCharacterEncoding("UTF-8");
 			String noStr = request.getParameter("no");
+			AddressService addressService = new AddressService();
+			Address address = addressService.addressDetail(Integer.parseInt(noStr));
 
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -61,10 +63,10 @@ public class AddressUpdateFormServlet extends HttpServlet {
 			out.println("		<a href='address_list'>[주소록리스트]</a>");
 			out.println("	</div>");
 			out.println("	<form method='post' action='address_update_action'>");
-			out.println("		번호----<input type='text' name='no' value='1'><br>");
-			out.println("		이름----<input type='text' name='name' value='김경호'><br>");
-			out.println("		전화번호<input type='text' name='phone' value='123-4568'><br>");
-			out.println("		주소----<input type='text' name='address' value='경기도 성남시'><br> ");
+			out.printf("		번호----<input type='text' name='no' value='%d'><br>",address.getNo());
+			out.printf("		이름----<input type='text' name='name' value='%s'><br>",address.getName());
+			out.printf("		전화번호<input type='text' name='phone' value='%s'><br>",address.getPhone());
+			out.printf("		주소----<input type='text' name='address' value='%s'><br> ",address.getAddress());
 			out.println("		<input type='submit' value='주소록수정'>");
 			out.println("		<input type='reset' value='주소록수정폼지우기'>");
 			out.println("	</form>");

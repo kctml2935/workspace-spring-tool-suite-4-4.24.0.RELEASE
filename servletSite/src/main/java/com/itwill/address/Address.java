@@ -32,7 +32,11 @@ public class Address {
 		this.phone = phone;
 		this.address = address;
 	}
-
+	public Address(String name, String phone, String address) {
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+	}
 	public int getNo() {
 		return no;
 	}

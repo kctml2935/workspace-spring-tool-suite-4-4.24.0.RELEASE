@@ -49,6 +49,8 @@ public class AddressDetailServlet extends HttpServlet {
 				return;
 			}
 			
+			AddressService addressService = new AddressService();
+			Address address = addressService.addressDetail(Integer.parseInt(noStr));
 			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -64,14 +66,14 @@ public class AddressDetailServlet extends HttpServlet {
 			out.println("	<a href='address_main'>[메인]</a>");
 			out.println("	<a href='address_insert_form'>[주소록쓰기폼]</a>");
 			out.println("	<a href='address_list'>[주소록리스트]</a>");
-			out.println("	<a href='address_delete_action?no=1'>김경호님삭제[GET]</a>");
-			out.println("	<a href='address_update_form'>[김경호님 주소록수정폼]</a>");
+			out.printf("	<a href='address_delete_action?no=%d'>%s님삭제[GET]</a>",address.getNo(),address.getName());
+			out.printf("	<a href='address_update_form'>[%s님 주소록수정폼]</a>",address.getName());
 			out.println("</div>");
 			out.println("<p>");
-			out.println("	번호:1<br>");
-			out.println("	이름:김경호<br>");
-			out.println("	전화:123-4568<br>");
-			out.println("	주소:경기도 성남시<br>");
+			out.printf("	번호:%d<br>",address.getNo());
+			out.printf("	이름:%s<br>",address.getName());
+			out.printf("	전화:%s<br>",address.getPhone());
+			out.printf("	주소:%s<br>",address.getAddress());
 			out.println("</p>");
 			out.println("</body>");
 			out.println("</html>");
