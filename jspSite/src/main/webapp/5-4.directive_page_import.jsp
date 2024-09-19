@@ -1,5 +1,5 @@
-<%@page import="jspSite.address.Address"%>
-<%@page import="jspSite.address.AddressService"%>
+<%@page import="com.itwill.address.Address"%>
+<%@page import="com.itwill.address.AddressService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
