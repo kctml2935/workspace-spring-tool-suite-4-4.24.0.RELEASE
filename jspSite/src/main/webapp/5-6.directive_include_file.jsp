@@ -10,6 +10,7 @@
 <h1>include 지시어[file]</h1>
 <h2>형태:&lt;%@include file="xxx.jspf"&gt;</h2>
 <hr/>
+<jsp:include page="6-2.action_tag_included_top.jsp"/>
 <ol>
 <li>content</li>
 <li>content</li>
@@ -22,6 +23,6 @@
 <li>content</li>
 </ol>
 
-
+<jsp:include page="6-2.action_tag_included_footer.jsp"/>
 </body>
 </html>
