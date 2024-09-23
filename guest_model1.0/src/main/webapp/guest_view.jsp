@@ -11,7 +11,7 @@ if(guest_noStr==null || guest_noStr.equals("")){
 GuestService guestService=new GuestService();
 Guest guest=guestService.guestDetail(Integer.parseInt(guest_noStr));
 
-%>  
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,7 +60,7 @@ Guest guest=guestService.guestDetail(Integer.parseInt(guest_noStr));
 								</tr>
 							</table> <!-- view Form  -->
 							<form name="f" method="post">
-								<input type="hidden" name="guest_no" value="25" />
+								<input type="hidden" name="guest_no" value="<%=guest.getGuestNo()%>" />
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
@@ -97,8 +97,8 @@ Guest guest=guestService.guestDetail(Integer.parseInt(guest_noStr));
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
 									<td align=center><input type="button" value="수정"
-										onClick="guestModifyForm();"> &nbsp; <input type="button"
-										value="삭제" onClick="guestRemove();"> &nbsp; <input
+										onclick="guestModifyForm();"> &nbsp; <input type="button"
+										value="삭제" onclick="guestRemove();"> &nbsp; <input
 										type="button" value="목록" onClick="guestList()"></td>
 								</tr>
 							</table>
