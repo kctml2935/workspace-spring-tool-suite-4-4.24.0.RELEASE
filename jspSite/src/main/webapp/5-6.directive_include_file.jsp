@@ -23,6 +23,6 @@
 <li>content</li>
 </ol>
 
-<jsp:include page="6-2.action_tag_included_footer.jsp"/>
+<jsp:include page="5-6.directive_included_file.jspf"/>
 </body>
 </html>

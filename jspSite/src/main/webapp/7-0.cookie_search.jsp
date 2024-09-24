@@ -5,6 +5,16 @@
 	/*
 	1. 요청객체로부터 클라이언트가 전송한 쿠키객체들얻기
 	*/
+	Cookie[] cookies = request.getCookies();
+	String previousSearchKeyword ="";
+	if(cookies!=null){
+		for(Cookie cookie: cookies){
+			if(cookie.getName().equals("searchKeyword")){
+				previousSearchKeyword=cookie.getValue();
+				
+			}
+		}
+	}
 	
 %>    
 <!DOCTYPE html>
