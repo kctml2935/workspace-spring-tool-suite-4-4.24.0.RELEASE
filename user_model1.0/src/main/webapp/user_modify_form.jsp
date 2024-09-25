@@ -2,7 +2,7 @@
 <%@page import="com.itwill.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ include file="user_login_check.jspf" %>	
 
 <%
 	/*
@@ -10,7 +10,7 @@
 	2. 세션의 sUserId를 사용해서 UserService.findUser()메쏘드호출
 	3. 반환된 User객체를 form  element  value 값으로 출력
 	*/
-	
+	User loginUser =new UserService().findUser(sUserId);
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,6 +50,7 @@
 		}
 
 		document.f.action = "user_modify_action.jsp";
+		document.f.method = "POST";
 		document.f.submit();
 	}
 	function userMain() {
@@ -95,40 +96,40 @@
 								</tr>
 							</table> <!-- update Form  -->
 							<form name="f" method="post">
-
+								<input type="hidden" name="userId" value="<%=loginUser.getUserId()%>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left">guard</td>
+											align="left"><%=loginUser.getUserId() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="password" style="width: 150px"
-											name="password" value="1111"></td>
+											name="password" value="<%=loginUser.getPassword()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호
 											확인</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="password" style="width: 150px"
-											name="password2" value="1111"></td>
+											name="password2" value="<%=loginUser.getPassword()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="name" value="김경호"></td>
+											name="name" value="<%=loginUser.getName()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="email" value="guard@gmail.com"></td>
+											name="email" value="<%=loginUser.getEmail()%>"></td>
 									</tr>
 								</table>
 							</form> <br>
@@ -136,8 +137,8 @@
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
 									<td align=center><input type="button" value="내정보수정"
-										onClick="userModify()"> &nbsp; <input type="button"
-										value="메인" onClick="userMain()"></td>
+										onclick="userModify()"> &nbsp; <input type="button"
+										value="메인" onclick="userMain()"></td>
 								</tr>
 							</table>
 

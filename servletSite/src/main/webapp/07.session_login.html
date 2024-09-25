@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>íšŒì› ì¸ì¦</title>
+<title>È¸¿ø ÀÎÁõ</title>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
 <link rel="stylesheet" type="text/css" href="./css/com.css">
 <script type="text/javascript" src="./js/com.js">
-	//ì´ìœ„ì¹˜ì— codeë¥¼ ê¸°ìˆ í•˜ë©´ ì•ˆë©ë‹ˆë‹¤..
+	//ÀÌÀ§Ä¡¿¡ code¸¦ ±â¼úÇÏ¸é ¾ÈµË´Ï´Ù..
 	function test() {
 
 	}
@@ -16,12 +16,12 @@
 	}
 	function form_check(f) {
 		if (is_null(f.id.value)) {
-			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”!!");
+			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä!!");
 			f.id.focus();
 			return;
 		}
 		if (is_null(f.pass.value)) {
-			alert("íŒ¨ì“°ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”!!");
+			alert("ÆĞ¾²¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä!!");
 			f.pass.focus();
 			return;
 		}
@@ -33,24 +33,24 @@
 </head>
 
 <body onload="loading(document.login);">
-	<h3 align="center">â—†â—†â—† íšŒì› ë¡œê·¸ì¸ â—†â—†â—†</h3>
+	<h3 align="center">¡ß¡ß¡ß È¸¿ø ·Î±×ÀÎ ¡ß¡ß¡ß</h3>
 
 	<form name="login" action="javascript:form_check(document.login);">
 		<table bgcolor="black" cellspacing="1" cellpadding="5" align="center">
 			<tr>
-				<th bgcolor="44ff44"><font size="2">ì•„ì´ë””</font></th>
+				<th bgcolor="44ff44"><font size="2">¾ÆÀÌµğ</font></th>
 				<td bgcolor="white" width="170" align="center"><input
 					type="text" size="20" name="id"></td>
 			</tr>
 			<tr>
-				<th bgcolor="44ff44"><font size="2">ë¹„ë°€ë²ˆí˜¸</font></th>
+				<th bgcolor="44ff44"><font size="2">ºñ¹Ğ¹øÈ£</font></th>
 				<td bgcolor="white" width="170" align="center"><input
 					type="password" size="20" name="pass"></td>
 			</tr>
 			<tr>
 				<th colspan="2" bgcolor="ff8888"><input type="checkbox"
-					name="savecookie" checked="checked"><font size="2">IDì €ì¥</font>
-					&nbsp;<input type="submit" value="ë¡œê·¸ì¸" class="TXTFLD"></th>
+					name="savecookie" checked="checked"><font size="2">IDÀúÀå</font>
+					&nbsp;<input type="submit" value="·Î±×ÀÎ" class="TXTFLD"></th>
 			</tr>
 		</table>
 	</form>

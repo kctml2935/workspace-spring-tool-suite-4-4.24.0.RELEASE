@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
 <title>form 요소 연습</title>
+<link rel="stylesheet" type="text/css" href="css/member.css">
 </head>
 <body>
 	<br />
@@ -83,7 +83,7 @@
 					<input type="button" value="눌러주세요"  onclick="alert('버튼클릭');" /> 
 					--> 
 					<!-- image : 이미지 입힌 버튼 모양, 서버로 데이터 전송 -->
-					<input type="image" src="images/join_btn.png" /> 
+					<input type="image" src="image/join.png" style="width:80px;height:50px" /> 
 					<!-- submit : 버튼 모양, 서버로 데이터 전송 -->
 					<input type="submit" value="서버로 전송" />
 					<!-- reset : 초기화, 최초 페이지 로딩할 때 상태로 전환 --> 
@@ -94,15 +94,6 @@
 			</tr>
 		</table>
 	</form>
-
+<jsp:include page="6-2.action_tag_included_footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

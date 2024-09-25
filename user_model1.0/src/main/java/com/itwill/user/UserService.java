@@ -35,15 +35,23 @@ public class UserService {
 	 * 	2:로그인성공(세션)
 	 */
 	public int login(String userId,String password) throws Exception{
-		int result=-1;
-		
-		return result;
+		User user=userDao.findUser(userId);
+		if(user==null) {
+			//아이디존재안함
+			return 0;
+		}
+		if(!user.isMatchPassword(password)) {
+			//패쓰워드불일치
+			return 1;
+		}
+		//로그인성공
+		return 2;
 	}
 	/*
 	 * 회원상세보기
 	 */
 	public User findUser(String userId)throws Exception{
-		return null;
+		return userDao.findUser(userId);
 	}
 	/*
 	 * 회원수정

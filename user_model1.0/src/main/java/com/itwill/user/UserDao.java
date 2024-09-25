@@ -169,6 +169,7 @@ public class UserDao{
 	}
 
 	/*
+	 * << admin >>
 	 * 모든사용자 정보를 데이타베이스에서 찾아서 List<User> 콜렉션 에 저장하여 반환
 	 */
 	
