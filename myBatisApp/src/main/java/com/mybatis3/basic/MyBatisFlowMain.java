@@ -37,12 +37,13 @@ public class MyBatisFlowMain {
 		/*
 		 * 4. SqlSession사용(CRUD)
 		*/
-		sqlSession.selectOne("");
-		sqlSession.selectList("");
+		Student student =sqlSession.selectOne("findStudentById",1);
+		System.out.println(student);
+		List<Student> studentList=sqlSession.selectList("findAllStudents");
+		System.out.println(studentList);
 		/*
 		 * 5. SqlSession close
 		 */
 		sqlSession.close();
-		
 	}
 }

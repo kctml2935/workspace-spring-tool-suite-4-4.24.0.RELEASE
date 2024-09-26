@@ -32,16 +32,10 @@ ADDR_ID          NUMBER(11)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Student {
-	
 	private Integer studId;
-	
 	private String name;
-	
 	private String email;
-	
 	private Date dob;
-
-
+	private String phone;
 }

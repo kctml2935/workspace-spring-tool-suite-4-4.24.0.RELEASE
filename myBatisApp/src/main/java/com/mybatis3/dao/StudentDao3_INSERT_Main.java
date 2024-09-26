@@ -16,10 +16,12 @@ public class StudentDao3_INSERT_Main {
 		parameterType: DTO,VO,Domain
 		*/
 		System.out.println("---------insertStudentBySequence(Dto)--------------------------");
-	
-		System.out.println(">>> dao return insertRowCount:"+0);
-		System.out.println("---------insertStudentBySequenceReturnPrimaryKey---------------");
+		int insertRowCount=
+				studentDao.insertStudentBySequence(
+						new Student(null, "시퀀스1", "kim@naver.com", new Date(), "333-9090"));
+		System.out.println(">>> dao return insertRowCount:"+insertRowCount);
 		
+		System.out.println("---------insertStudentBySequenceReturnPrimaryKey---------------");
 		System.out.println(">>> dao return  insertPrimaryKey:"+0);
 		System.out.println(">>> Student[Dto]     primary key:"+0);
 		

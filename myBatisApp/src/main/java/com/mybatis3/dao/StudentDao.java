@@ -17,7 +17,7 @@ public class StudentDao {
 			"com.mybatis3.dao.mapper.StudentMapper.";
 	public StudentDao() {
 		try {
-			sqlSessionFactory=
+			this.sqlSessionFactory=
 					new SqlSessionFactoryBuilder()
 					.build(Resources.getResourceAsStream("mybatis-config.xml")); 
 		}catch (Exception e) {
@@ -33,13 +33,16 @@ public class StudentDao {
 	 resultType :  DTO
 	*/
 	public Student findStudentById(Integer studId) {
-		Student student=null;
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		Student student = sqlSession.selectOne(NAMESPACE+"findStudentById",studId);
+		sqlSession.close();
 		return student;
 	}
 
 	public List<Student> findAllStudents() {
-		
-		List<Student> studentList=null;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		List<Student> studentList=sqlSession.selectList(NAMESPACE+"findAllStudents");
+		sqlSession.close();
 		return studentList;
 	}
 
@@ -47,12 +50,16 @@ public class StudentDao {
 	 * resultMap :  DTO
 	 */
 	public Student findStudentByIdResultMap(Integer studId) {
-		Student student=null;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		Student student=
+				sqlSession.selectOne(NAMESPACE+"findStudentByIdResultMap",studId);
 		return student;
 	}
 
 	public List<Student> findAllStudentsResultMap() {
-		List<Student> studentList=null;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		List<Student> studentList=
+				sqlSession.selectList(NAMESPACE+"findAllStudentsResultMap");
 		return studentList;
 	}
 	/*******************************************************************
@@ -62,11 +69,17 @@ public class StudentDao {
 	 * resultType :  String,Wrapper,List<Wrapper>,List<String>
 	 */
 	public String  findStudentNameById(Integer studId) {
-		String name="";
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		
+		String name=
+				sqlSession.selectOne(NAMESPACE+"findStudentNameById",studId);
 		return name;
 	}
 	public List<String> findStudentNameList(){
-		List<String> nameList=null;
+		SqlSession sqlSession=
+				sqlSessionFactory.openSession(true);
+		List<String> nameList=
+				sqlSession.selectList(NAMESPACE+"findStudentNameList");
 		return nameList;
 	}
 	/**************************************************
@@ -110,9 +123,10 @@ public class StudentDao {
 	parameterType: DTO,VO,Domain
 	*/
 	public int insertStudentBySequence(Student student) {
-		
-		int rowCount=0;
-				
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		int rowCount=
+			sqlSession.insert(NAMESPACE+"insertStudentBySequence", student);
+		sqlSession.close();
 		return rowCount;
 	}
 	public int insertStudentBySequenceReturnPrimaryKey(Student student) {
@@ -148,15 +162,3 @@ public class StudentDao {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
