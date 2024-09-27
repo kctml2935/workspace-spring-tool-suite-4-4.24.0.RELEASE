@@ -24,7 +24,7 @@ public class Address implements Serializable
 	private String state;
 	private String zip;
 	private String country;
-
+	private List<Student> students;
 	
 	
 	

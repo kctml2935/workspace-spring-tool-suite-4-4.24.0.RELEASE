@@ -22,8 +22,11 @@ public class StudentDao3_INSERT_Main {
 		System.out.println(">>> dao return insertRowCount:"+insertRowCount);
 		
 		System.out.println("---------insertStudentBySequenceReturnPrimaryKey---------------");
-		System.out.println(">>> dao return  insertPrimaryKey:"+0);
-		System.out.println(">>> Student[Dto]     primary key:"+0);
+		Student insertStudent=
+				new Student(null, "시퀀스2", "kim2@naver.com", new Date(), "333-7777");
+		int insertPrimaryKey = studentDao.insertStudentBySequenceReturnPrimaryKey(insertStudent);
+		System.out.println(">>> dao return  insertPrimaryKey:"+insertPrimaryKey);
+		System.out.println(">>> Student[Dto]     primary key:"+insertStudent.getStudId());
 		
 		
 		

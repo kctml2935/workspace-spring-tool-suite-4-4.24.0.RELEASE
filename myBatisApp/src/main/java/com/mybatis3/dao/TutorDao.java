@@ -28,21 +28,10 @@ public class TutorDao
 	SELECT  TUTOR + COURSES JOIN [ 1 : N ]
 	*****************************************/
 	public Tutor findTutorByIdWithCourses(Integer tutorId) {
-		
-		Tutor tutor=null;
+		SqlSession sqlSession=
+				sqlSessionFactory.openSession(true);
+		Tutor tutor=
+			sqlSession.selectOne(NAMESPACE+"findTutorByIdWithCourses",tutorId);
 		return tutor;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
