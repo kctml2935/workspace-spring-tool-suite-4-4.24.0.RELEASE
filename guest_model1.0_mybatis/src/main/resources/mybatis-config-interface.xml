@@ -21,6 +21,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/itwill/mapper/GuestMapper.xml"/>
+		<mapper class="com.itwill.guest.mapper.GuestMapper"/>
 	</mappers>
 </configuration>

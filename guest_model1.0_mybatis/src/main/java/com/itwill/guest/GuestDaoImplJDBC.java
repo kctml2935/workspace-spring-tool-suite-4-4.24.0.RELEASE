@@ -16,7 +16,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
  *   - guest테이블에 CRUD(Create,Read,Update,Delet)작업을 하는 
  *     단위메쏘드를 가지고있는 객체(클래스)
  */
-public class GuestDaoImplJDBC {
+public class GuestDaoImplJDBC implements GuestDao {
 	/*
 	 * - DataSource객체 : Connection을 반환해주는객체
 	 * - 톰캣에서제공하는 DataSource 객체사용
@@ -37,6 +37,7 @@ public class GuestDaoImplJDBC {
 		this.dataSource=basicDataSource;	
 	}
 	
+	@Override
 	public int insert(Guest guest)throws Exception {
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt1=con.prepareStatement(GuestSQL.GUEST_INSERT_BEFORE_GUEST_NO);
@@ -60,6 +61,7 @@ public class GuestDaoImplJDBC {
 		con.close();
 		return new_guest_no;
 	}
+	@Override
 	public int update(Guest guest) throws Exception{
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(GuestSQL.GUEST_UPDATE);
@@ -74,6 +76,7 @@ public class GuestDaoImplJDBC {
 		con.close();
 		return rowCount;
 	}
+	@Override
 	public int delete(int guestNo) throws Exception{
 		
 		Connection con=dataSource.getConnection();
@@ -86,6 +89,7 @@ public class GuestDaoImplJDBC {
 		
 		
 	}
+	@Override
 	public Guest findByGuestNo(int guestNo) throws Exception{
 		Guest guest=null;
 		Connection con=dataSource.getConnection();
@@ -106,6 +110,7 @@ public class GuestDaoImplJDBC {
 		con.close();
 		return guest;
 	}
+	
 	public List<Guest> findByGuestName(String guestName) throws Exception{
 		List<Guest> guestList=new ArrayList<Guest>();
 		Connection con=dataSource.getConnection();
@@ -127,6 +132,7 @@ public class GuestDaoImplJDBC {
 		con.close();
 		return guestList;
 	}
+	
 	public List<Guest> findByGuestTitle(String guestTitle) throws Exception{
 		List<Guest> guestList=new ArrayList<Guest>();
 		Connection con=dataSource.getConnection();
@@ -148,6 +154,7 @@ public class GuestDaoImplJDBC {
 		con.close();
 		return guestList;
 	}
+	
 	public List<Guest> findByGuestContent(String guestContent) throws Exception{
 		List<Guest> guestList=new ArrayList<Guest>();
 		Connection con=dataSource.getConnection();
@@ -169,6 +176,7 @@ public class GuestDaoImplJDBC {
 		con.close();
 		return guestList;
 	}
+	
 	public List<Guest> findByAll() throws Exception {
 		List<Guest> guestList=new ArrayList<Guest>();
 		Connection con=dataSource.getConnection();

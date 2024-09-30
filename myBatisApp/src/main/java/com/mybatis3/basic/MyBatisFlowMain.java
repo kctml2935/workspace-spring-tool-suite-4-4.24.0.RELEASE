@@ -37,9 +37,9 @@ public class MyBatisFlowMain {
 		/*
 		 * 4. SqlSession사용(CRUD)
 		*/
-		Student student =sqlSession.selectOne("findStudentById",1);
+		Student student =sqlSession.selectOne("com.mybatis3.dao.mapper.StudentBasicMapper.findStudentById",1);
 		System.out.println(student);
-		List<Student> studentList=sqlSession.selectList("findAllStudents");
+		List<Student> studentList=sqlSession.selectList("com.mybatis3.dao.mapper.StudentBasicMapper.findAllStudents");
 		System.out.println(studentList);
 		/*
 		 * 5. SqlSession close

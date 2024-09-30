@@ -35,6 +35,7 @@ STUD_ID   NOT NULL NUMBER(11)
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Builder
 public class Student {
 	@NonNull
 	private Integer studId;

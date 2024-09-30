@@ -8,12 +8,11 @@ import com.mybatis3.dao.mapper.StudentBasicMapper;
 import com.mybatis3.dao.mapper.StudentMapper;
 import com.mybatis3.domain.Student;
 
-public class MapperProxy implements StudentBasicMapper {
+public class MapperProxy가어떤일을하는지설명하기위한클래스 implements StudentBasicMapper{
 	private SqlSession sqlSession;
 	@Override
 	public Student findStudentById(Integer studId) {
-		String namespace = StudentMapper.class.getName();
-		
+		String namespace = StudentBasicMapper.class.getName();
 		Student student=sqlSession.selectOne(namespace+".findStudentById",studId);
 		sqlSession.commit();
 		sqlSession.close();
