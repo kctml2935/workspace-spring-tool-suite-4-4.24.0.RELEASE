@@ -14,9 +14,9 @@ public class GuestService{
 		public static final int GUEST_SEARCH_BY_CONTENT=3;
 	
 		
-		private GuestDao guestDao;
+		private GuestDaoImplJDBC guestDao;
 		public GuestService() throws Exception{
-			this.guestDao=new GuestDao();
+			this.guestDao=new GuestDaoImplJDBC();
 			
 		}
 		
