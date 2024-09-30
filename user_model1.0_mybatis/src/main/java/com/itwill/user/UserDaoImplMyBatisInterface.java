@@ -3,8 +3,11 @@ package com.itwill.user;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.itwill.user.mapper.UserMapper;
 
 public class UserDaoImplMyBatisInterface implements UserDao {
 
@@ -16,9 +19,11 @@ public class UserDaoImplMyBatisInterface implements UserDao {
 	}
 
 	@Override
-	public int update(User user) throws Exception {
+	public int update(User updateUser) throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : update() 호출  ");
-		int rowCount=0;
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int rowCount = sqlSession.getMapper(UserMapper.class).updateUserById(updateUser);
+		 
 		return rowCount;
 	}
 
