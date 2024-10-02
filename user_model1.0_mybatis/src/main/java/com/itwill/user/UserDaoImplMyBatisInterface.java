@@ -19,48 +19,56 @@ public class UserDaoImplMyBatisInterface implements UserDao {
 	}
 
 	@Override
-	public int update(User updateUser) throws Exception {
+	public int update(User user) throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : update() 호출  ");
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int rowCount = sqlSession.getMapper(UserMapper.class).updateUserById(updateUser);
-		 
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		int rowCount=sqlSession.getMapper(UserMapper.class).update(user);
+		sqlSession.close();
 		return rowCount;
 	}
 
 	@Override
 	public User findUser(String userId) throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : findUser() 호출  ");
-		
-		User user=null;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		User user=sqlSession.getMapper(UserMapper.class).findUser(userId);
+		sqlSession.close();
 		return user;
 	}
 
 	@Override
 	public List<User> findUserList() throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : findUserList 호출  ");
-		List<User> userList=null;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		List<User> userList=sqlSession.getMapper(UserMapper.class).findUserList();
+		sqlSession.close();
 		return userList;
 	}
 
 	@Override
 	public int insert(User user) throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : insert() 호출  ");
-		int rowCount=0;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		int rowCount=sqlSession.getMapper(UserMapper.class).insert(user);
+		sqlSession.close();
 		return rowCount;
 	}
 
 	@Override
 	public int delete(String userId) throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : delete() 호출  ");
-		
-		int rowCount=0;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		int rowCount=sqlSession.getMapper(UserMapper.class).delete(userId);
+		sqlSession.close();
 		return rowCount;
 	}
 
 	@Override
 	public int countByUserId(String userId) throws Exception {
 		System.out.println("#### UserDaoImplMyBatisInterface : countByUserId 호출  ");
-		int rowCount=0;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		int rowCount=sqlSession.getMapper(UserMapper.class).countByUserId(userId);
+		sqlSession.close();
 		return rowCount;
 	}
 

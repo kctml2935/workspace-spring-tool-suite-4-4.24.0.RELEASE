@@ -5,6 +5,7 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,15 +39,20 @@ STUD_ID   NOT NULL NUMBER(11)
 @Builder
 public class Student {
 	@NonNull
-	private Integer studId;
+	@Default
+	private Integer studId=0;
 	@NonNull
-	private String name;
+	@Default
+	private String name="";
 	@NonNull
-	private String email;
+	@Default
+	private String email="";
 	@NonNull
-	private Date dob;
+	@Default
+	private Date dob=new Date();
 	@NonNull
-	private String phone;
+	@Default
+	private String phone="";
 	
 	private List<Course> courses;
 	

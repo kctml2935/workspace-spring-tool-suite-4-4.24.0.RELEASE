@@ -23,33 +23,47 @@ public class GuestDaoImplMyBatisInterface implements GuestDao{
 	}
 	@Override
 	public int insert(Guest guest) throws Exception {
-	
-		return 0;
+		SqlSession sqlSession =sqlSessionFactory.openSession(true);
+		/************mapper interface사용안할시*************
+		int insertRowCount=sqlSession.insert("com.itwill.guest.mapper.GuestMapper.insert", guest);
+		****************************************************/
+		/************mapper interface사용시*****************/
+		GuestMapper guestMapper= 
+				sqlSession.getMapper(GuestMapper.class);
+		int insertRowCount=guestMapper.insert(guest);
+		/*******************/
+		sqlSession.close();
+		return guest.getGuestNo();
 	}
 
 	@Override
 	public int update(Guest guest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
+		int rowCount= guestMapper.update(guest);
+		return rowCount;
 	}
 
 	@Override
 	public int delete(int guestNo) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Guest findByGuestNo(int guestNo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List findByAll() throws Exception {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
-		List guestList= guestMapper.findByAll();
+		int rowCount= guestMapper.delete(guestNo);
+		return rowCount;
+	}
+	@Override
+	public Guest findByGuestNo(int guestNo) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
+		Guest guest= guestMapper.findByGuestNo(guestNo);
+		return guest;
+	}
+
+	@Override
+	public List<Guest> findByAll() throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession(true);
+		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
+		List<Guest> guestList= guestMapper.findByAll();
 		return guestList;
 	}
 
