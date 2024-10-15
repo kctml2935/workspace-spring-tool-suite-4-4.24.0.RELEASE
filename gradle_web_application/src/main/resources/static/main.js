@@ -1,1 +1,4 @@
-alert('Hello Gradle!!!!');
+/**
+ * 
+ */
+document.write('Hello Gradle!!!!');

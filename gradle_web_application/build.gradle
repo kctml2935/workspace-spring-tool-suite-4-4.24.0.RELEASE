@@ -23,11 +23,15 @@ repositories {
 }
 
 dependencies {
-	
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	/****** web *************/
+	/****** web **************/
  	implementation 'org.springframework.boot:spring-boot-starter-web'
+ 	/******file upload********/
+ 	/******Apache Commons IO***/
+	implementation 'commons-io:commons-io:2.11.0'
+	
 	/****** mybatis설정 *****/
 	implementation 'org.mybatis:mybatis:3.5.15'
     /***** lombok설정 ********/
