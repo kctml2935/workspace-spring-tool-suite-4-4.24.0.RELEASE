@@ -1,65 +1,71 @@
 
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.itwill.user.User"%>
 <%@page import="com.itwill.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" session="true"%>
+    pageEncoding="UTF-8" session="true"%>
 <%
-/*
-0  . GET방식요청일때 user_login_form.jsp로 redirection
-1  . 요청객체 인코딩설정
-2  . 파라메타 받기
-3  . UserService객체생성
-4  . UserService.login() 메쏘드실행
-*/
-if (request.getMethod().equalsIgnoreCase("GET")) {
-	response.sendRedirect("user_login_form.jsp");
-	return;
-}
-String userId = request.getParameter("userId");
-String password = request.getParameter("password");
-UserService userService = new UserService();
-/*
- * 회원로그인
- * 
- * 0:아이디존재안함
- * 1:패쓰워드 불일치
- * 2:로그인성공(세션)
- */
-int result = userService.login(userId, password);
-if (result == 0) {
-	//0:아이디존재안함
-	String msg1=userId+" 는 존재하지않는 아이디입니다.";
-	/*****************case1 script***********************/
-	out.println("<script>");
-	out.println(" alert('" + msg1 + "');");
-	out.println(" location.href='user_login_form.jsp';");
-	out.println("</script>");
-	/***************************************************/
-} else if (result == 1) {
-	//1:패쓰워드 불일치
-	String msg2="패쓰워드가 일치하지않습니다.";
-	/*****************case1 script***********************/
-	out.println("<script>");
-	out.println(" alert('" + msg2 + "');");
-	out.println(" location.href='user_login_form.jsp';");
-	out.println("</script>");
-	/***************************************************/
-} else if (result == 2) {
-	//2:로그인성공(세션)
-	session.setAttribute("sUserId", userId);
-	response.sendRedirect("user_main.jsp");
-}
+	/*
+	0  . GET방식요청일때 user_login_form.jsp로 redirection
+	1  . 요청객체 인코딩설정
+	2  . 파라메타 받기
+	3  . UserService객체생성
+	4  . UserService.login() 메쏘드실행
+	*/
+	
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("user_main.jsp");
+		return;
+	}
+	String userId=request.getParameter("userId"); 
+	String password=request.getParameter("password"); 
+	/*
+	 * 회원로그인
+	 * 
+	 * 0:아이디존재안함
+	 * 1:패쓰워드 불일치
+	 * 2:로그인성공(세션)
+	 */
+	int result= new UserService().login(userId, password);
+    if(result==0){
+    	//0:아이디존재안함
+    	/***********case1 script********************/
+		/***********case2 redirect******************
+		String msg1=userId+" 는 존재하지않는 아이디입니다.";
+    	msg1=URLEncoder.encode(msg1, "UTF-8");
+    	String queryString ="msg1="+msg1+"&userId="+userId+"&password="+password;
+		response.sendRedirect("user_login_form.jsp?"+queryString);
+		*/
+		/***********case3 forward*******************/
+		
+		User fuser=new User(userId,password,"","");
+		String msg1=userId+" 는 존재하지않는 아이디입니다.";
+		request.setAttribute("fuser", fuser);
+		request.setAttribute("msg1", msg1);
+		//<jsp:forward path="user_login_form.jsp">
+		RequestDispatcher rd=request.getRequestDispatcher("user_login_form.jsp");
+		rd.forward(request, response);
+    }else if(result==1){
+    	//1:패쓰워드 불일치
+    	/***********case1 script********************/
+		/***********case2 redirect******************
+		String msg2="패쓰워드가 일치하지않습니다.";
+    	msg2=URLEncoder.encode(msg2, "UTF-8");
+    	String queryString ="msg2="+msg2+"&userId="+userId+"&password="+password;
+    	response.sendRedirect("user_login_form.jsp?"+queryString);
+		********************************************/
+    	/***********case3 forward*******************/
+    	User fuser=new User(userId,password,"","");
+		String msg2="패쓰워드가 일치하지않습니다.";
+		request.setAttribute("fuser", fuser);
+		request.setAttribute("msg2", msg2);
+		//<jsp:forward path="user_login_form.jsp">
+		RequestDispatcher rd=request.getRequestDispatcher("user_login_form.jsp");
+		rd.forward(request, response);
+		    	
+    }else if(result==2){
+    	//2:로그인성공(세션)
+    	session.setAttribute("sUserId", userId);
+    	response.sendRedirect("user_main.jsp");
+    }
 %>
-
-
-
-
-
-
-
-
-
-
-
-
-
