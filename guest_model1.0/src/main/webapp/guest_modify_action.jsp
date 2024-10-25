@@ -1,6 +1,6 @@
 <%@page import="com.itwill.guest.Guest"%>
 <%@page import="java.util.Date"%>
-<%@page import="com.itwill.guest.GuestService"%>
+<%@page import="com.itwill.guest.GuestServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -27,7 +27,7 @@ GET방식이면 guest_main.jsp redirection
 	String content = request.getParameter("guest_content");
 	
 	Guest guest = new Guest(Integer.parseInt(no), name, null, email, homepage, title, content);
-	GuestService guestService = new GuestService();
+	GuestServiceImpl guestService = new GuestServiceImpl();
 		
 	guestService.guestUpdate(guest);
 	

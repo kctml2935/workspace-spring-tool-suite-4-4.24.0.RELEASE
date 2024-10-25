@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d [%-5p] %c - %m%n"/>
+    </Console>
+  </Appenders>
+  
+  <Loggers>
+     <!-- 
+     <Logger name="org.springframework" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="org.apache" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="org.mybatis" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.Connetion" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.Statement" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.PreparedStatement" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.ResultSet" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger> -->
+     <logger name="org.apache.jasper.servlet" level="ERROR">
+          <AppenderRef ref="Console"/>
+    </logger>
+     <logger name="org.apache.tomcat.util" level="ERROR">
+          <AppenderRef ref="Console"/>
+    </logger>
+     <logger name="sun.rmi" level="ERROR">
+          <AppenderRef ref="Console"/>
+    </logger>
+     <logger name="javax.management" level="ERROR">
+          <AppenderRef ref="Console"/>
+    </logger>
+     <logger name="org.apache.catalina" level="ERROR">
+          <AppenderRef ref="Console"/>
+    </logger>
+    <Root level="DEBUG">
+      <AppenderRef ref="Console"/>
+    </Root>
+    
+  </Loggers>
+</Configuration>

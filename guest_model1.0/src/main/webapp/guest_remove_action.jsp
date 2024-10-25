@@ -1,4 +1,4 @@
-<%@page import="com.itwill.guest.GuestService"%>
+<%@page import="com.itwill.guest.GuestServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -21,10 +21,8 @@
 		response.sendRedirect("guest_main.jsp");
  		return;
 	}
-	GuestService guestService = new GuestService();
+	GuestServiceImpl guestService = new GuestServiceImpl();
 	guestService.guestDelete(Integer.parseInt(noStr));
 	
 	response.sendRedirect("guest_list.jsp");
- 	
-
 %>
